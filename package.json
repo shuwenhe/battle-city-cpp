@@ -1,0 +1,73 @@
+{
+  "name": "battle-city",
+  "version": "0.4.0",
+  "description": "Battle city remake built with React 19 + PixiJS v8.",
+  "author": "feichao93 (https://github.com/feichao93)",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/feichao93/battle-city.git"
+  },
+  "homepage": "https://github.com/feichao93/battle-city",
+  "keywords": [
+    "battle-city",
+    "tank",
+    "game",
+    "nes",
+    "react",
+    "pixijs"
+  ],
+  "type": "module",
+  "bin": {
+    "battle-city": "bin/battle-city.js"
+  },
+  "files": [
+    "bin",
+    "www",
+    "src",
+    "index.html",
+    "vite.config.ts",
+    "tsconfig.json"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build --base ./",
+    "preview": "vite preview",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "arena": "ARENA=1 vitest run test/arena.test.ts",
+    "build:npm": "tsc --noEmit && vite build --base ./ --outDir www --emptyOutDir",
+    "prepack": "npm run build:npm"
+  },
+  "devDependencies": {
+    "@types/react": "^19.0.2",
+    "@types/react-dom": "^19.0.2",
+    "@types/ws": "^8.18.1",
+    "@vitejs/plugin-react": "^4.3.4",
+    "jsdom": "^25.0.1",
+    "pixi.js": "^8.6.6",
+    "prettier": "^3.4.2",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "typescript": "^5.7.2",
+    "vite": "^6.0.5",
+    "vitest": "^3.2.4",
+    "zustand": "^5.0.2"
+  },
+  "packageManager": "pnpm@11.6.0",
+  "prettier": {
+    "printWidth": 100,
+    "semi": false,
+    "singleQuote": true,
+    "trailingComma": "all"
+  },
+  "dependencies": {
+    "ws": "^8.21.0"
+  }
+}
