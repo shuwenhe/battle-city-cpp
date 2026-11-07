@@ -29,7 +29,6 @@ build/
 # 编译和调试
 CMakeFiles/
 cmake_install.cmake
-Makefile
 *.o
 *.a
 *.so
