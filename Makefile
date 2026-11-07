@@ -27,20 +27,22 @@ help:
 	@echo "$(BLUE)║        🎮 Battle City C++ 游戏引擎 - Makefile         ║$(NC)"
 	@echo "$(BLUE)╚════════════════════════════════════════════════════════╝$(NC)"
 	@echo ""
-	@echo "$(GREEN)快速开始:$(NC)"
-	@echo "  make dev              - 安装依赖并启动开发服务器（推荐）"
-	@echo "  make run              - 编译并在后台运行游戏"
+	@echo "$(GREEN)🚀 快速开始 (C++ 后端 + React 前端):$(NC)"
+	@echo "  make backend          - 编译 C++ 后端服务器"
+	@echo "  make run-backend      - 启动 C++ 后端 (port 3000)"
+	@echo "  make frontend         - 启动 React 前端 (port 5173)"
+	@echo "  make run-all          - 启动后端+前端（两个终端）"
 	@echo ""
 	@echo "$(GREEN)构建命令:$(NC)"
-	@echo "  make install          - 安装 npm 依赖（pnpm install）"
-	@echo "  make build            - 构建生产版本"
+	@echo "  make backend          - 编译 C++ 服务器 (cmake + make)"
+	@echo "  make build            - 构建 React 生产版本"
 	@echo "  make build-wasm       - 编译 C++ 为 WebAssembly"
-	@echo "  make clean            - 清理构建输出"
+	@echo "  make clean            - 清理所有构建输出"
 	@echo ""
 	@echo "$(GREEN)开发命令:$(NC)"
-	@echo "  make dev              - 启动开发服务器（热重载）"
-	@echo "  make run              - 后台运行开发服务器"
-	@echo "  make stop             - 停止后台服务"
+	@echo "  make dev              - 启动 React 开发服务器（热重载）"
+	@echo "  make run-backend      - 启动 C++ 后端服务器"
+	@echo "  make stop             - 停止所有服务"
 	@echo ""
 	@echo "$(GREEN)测试和检查:$(NC)"
 	@echo "  make test             - 运行单元测试"
@@ -151,10 +153,66 @@ serve: check-env install
 	@echo "访问: http://localhost:$(PORT)"
 	@echo "查看日志: tail -f /tmp/battle-city.log"
 
-# 停止后台进程
+# 停止后台进程（前端+后端）
 stop:
-	@echo "$(YELLOW)🛑 停止游戏服务...$(NC)"
-	@-pkill -f "node.*vite" 2>/dev/null && echo "✅ 已停止" || echo "⚠️ 没有运行中的进程"
+	@echo "$(YELLOW)🛑 停止所有服务...$(NC)"
+	@-pkill -f "node.*vite" 2>/dev/null && echo "✅ 前端已停止" || echo "⚠️ 前端无进程"
+	@-pkill -f "battle-city-server" 2>/dev/null && echo "✅ 后端已停止" || echo "⚠️ 后端无进程"
+
+# ============================================================================
+# C++ 后端命令
+# ============================================================================
+
+# 编译 C++ 后端
+backend: check-env
+	@echo "$(BLUE)🔨 编译 C++ 后端服务器$(NC)"
+	@echo ""
+	@mkdir -p build
+	@cd build && cmake .. && make
+	@echo ""
+	@echo "$(GREEN)✅ 后端编译完成$(NC)"
+	@echo "二进制文件: ./build/battle-city-server"
+	@echo ""
+
+# 运行 C++ 后端服务器
+run-backend: backend
+	@echo "$(BLUE)🚀 启动 C++ 后端服务器$(NC)"
+	@echo ""
+	@./build/battle-city-server
+
+# 后台运行 C++ 后端
+run-backend-daemon: backend
+	@echo "$(BLUE)🚀 在后台启动 C++ 后端服务器$(NC)"
+	@echo ""
+	@nohup ./build/battle-city-server > /tmp/battle-city-server.log 2>&1 &
+	@sleep 1
+	@echo "$(GREEN)✅ 后端已启动 (PID: $$(pgrep -f battle-city-server))$(NC)"
+	@echo "监听: http://localhost:3000"
+	@echo "日志: tail -f /tmp/battle-city-server.log"
+
+# 同时启动前端和后端
+run-all: run-backend-daemon
+	@echo ""
+	@echo "$(BLUE)🎮 启动 React 前端$(NC)"
+	@if command -v pnpm > /dev/null; then \
+		pnpm dev; \
+	else \
+		npm run dev; \
+	fi
+
+# 查看后端日志
+logs-backend:
+	@tail -f /tmp/battle-city-server.log
+
+# 查看进程状态（包括后端）
+status: status
+	@echo "$(BLUE)📊 C++ 后端状态$(NC)"
+	@ps aux | grep "battle-city-server" | grep -v grep || echo "后端无运行进程"
+	@echo ""
+	@echo "网络监听:"
+	@lsof -i :3000 2>/dev/null | grep -v COMMAND || echo "3000 端口未使用"
+	@echo "$(BLUE)📊 React 前端状态$(NC)"
+	@ps aux | grep -E "node.*vite|npm.*dev" | grep -v grep || echo "无"
 
 # 查看日志
 logs:
