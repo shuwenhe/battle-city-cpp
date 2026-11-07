@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react'
-import type { PlayerControl } from '../../core/input/bindings'
+import type { PlayerControl } from '../core/input/bindings'
 import { useUIStore } from './store'
 
 /** 界面导航的统一按键语义：方向移动焦点，确认，返回 */

@@ -21,14 +21,36 @@ function lanRelay(): Plugin {
   }
 }
 
+/** 在开发模式下注入全局变量到 HTML */
+function injectGlobals(): Plugin {
+  const appVersion = JSON.stringify(pkg.version)
+  const buildTime = JSON.stringify(new Date().toLocaleString('zh-CN', { hour12: false }))
+  
+  return {
+    name: 'inject-globals',
+    transformIndexHtml(html) {
+      return html.replace(
+        '</head>',
+        `<script>window.__APP_VERSION__=${appVersion};window.__BUILD_TIME__=${buildTime};</script></head>`
+      )
+    },
+  }
+}
+
 // 开发服务器沿用旧版 GitHub Pages 的 /battle-city/ 子路径；打包都用 --base ./，放在哪个路径下都能打开
 export default defineConfig({
   base: process.env.NODE_ENV === 'production' ? '/battle-city/' : '/',
-  plugins: [react(), lanRelay()],
+  plugins: [react({ jsxRuntime: 'automatic' }), injectGlobals(), lanRelay()],
   // 帮助面板里显示的版本号与编译时间（旧版 COMPILE_VERSION / COMPILE_DATE）
   define: {
     __APP_VERSION__: JSON.stringify(pkg.version),
     __BUILD_TIME__: JSON.stringify(new Date().toLocaleString('zh-CN', { hour12: false })),
+  },
+  resolve: {
+    alias: {
+      // 在开发时，直接映射到 window 对象的属性
+      ...(process.env.NODE_ENV === 'development' ? {} : {}),
+    },
   },
   test: {
     globals: true,

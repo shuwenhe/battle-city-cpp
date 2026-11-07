@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { parseHash } from '../../app/frontend/router'
+import { parseHash } from '../../frontend/router'
 
 describe('parseHash', () => {
   it('解码关卡名，双人模式标记单独解析', () => {
