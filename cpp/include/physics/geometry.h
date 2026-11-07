@@ -1,6 +1,6 @@
 #pragma once                        // 防止头文件被多次包含
 
-#include "types.h"                  // 包含基本类型定义
+#include "common/types.h"                  // 包含基本类型定义
 #include <cmath>                    // 包含数学库(sqrt等)
 #include <algorithm>                // 包含算法库(max, min等)
 

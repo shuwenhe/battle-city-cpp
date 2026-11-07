@@ -8,8 +8,8 @@
 #ifndef GAME_LOGIC_H
 #define GAME_LOGIC_H
 
-#include "game-types.h"
-#include "game-state.h"
+#include "core/game-types.h"
+#include "core/game-state.h"
 #include <vector>
 #include <optional>
 

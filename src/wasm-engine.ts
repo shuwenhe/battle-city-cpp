@@ -246,3 +246,4 @@ export const SyncEngine = {        // 定义同步引擎对象
     return wasmModule._random_next()  // 直接调用C++函数
   },
 }
+}

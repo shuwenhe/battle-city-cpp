@@ -1,11 +1,11 @@
 #include <emscripten/emscripten.h>  // 包含Emscripten C++绑定库
 #include <emscripten/bind.h>       // 包含Emscripten绑定宏和函数
 
-#include "types.h"                 // 包含基本类型定义
-#include "geometry.h"              // 包含几何工具函数
-#include "collision.h"             // 包含碰撞检测函数
-#include "bullet-collision.h"      // 包含子弹碰撞系统
-#include "random.h"                // 包含随机数生成器
+#include "../include/common/types.h"                 // 包含基本类型定义
+#include "../include/physics/geometry.h"              // 包含几何工具函数
+#include "../include/physics/collision.h"             // 包含碰撞检测函数
+#include "../include/physics/bullet-collision.h"      // 包含子弹碰撞系统
+#include "../include/map/random.h"                // 包含随机数生成器
 
 using namespace emscripten;        // 使用emscripten命名空间
 

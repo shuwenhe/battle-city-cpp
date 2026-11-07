@@ -1,6 +1,6 @@
 #pragma once                        // 防止头文件被多次包含
 
-#include "types.h"                  // 包含基本类型定义
+#include "common/types.h"                  // 包含基本类型定义
 
 /**
  * 采用Mulberry32算法的有种子伪随机数生成器

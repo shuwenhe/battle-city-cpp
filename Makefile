@@ -21,37 +21,53 @@ WASM_DIR := dist/wasm
 # 主命令
 # ============================================================================
 
-# 默认目标：显示帮助
-help:
+# ============================================================================
+# 默认目标：一键启动开发环境（C++ 后端 + React 前端）
+# ============================================================================
+
+.DEFAULT_GOAL := start
+
+# 默认目标：一键启动
+start:
 	@echo "$(BLUE)╔════════════════════════════════════════════════════════╗$(NC)"
-	@echo "$(BLUE)║        🎮 Battle City C++ 游戏引擎 - Makefile         ║$(NC)"
+	@echo "$(BLUE)║   🚀 Battle City - 一键启动开发环境                   ║$(NC)"
 	@echo "$(BLUE)╚════════════════════════════════════════════════════════╝$(NC)"
 	@echo ""
-	@echo "$(GREEN)🚀 快速开始 (C++ 后端 + React 前端):$(NC)"
-	@echo "  make backend          - 编译 C++ 后端服务器"
-	@echo "  make run-backend      - 启动 C++ 后端 (port 3000)"
-	@echo "  make frontend         - 启动 React 前端 (port 5173)"
-	@echo "  make run-all          - 启动后端+前端（两个终端）"
+	@echo "$(GREEN)启动 C++ 后端 + React 前端...$(NC)"
 	@echo ""
-	@echo "$(GREEN)构建命令:$(NC)"
-	@echo "  make backend          - 编译 C++ 服务器 (cmake + make)"
+	@bash ./start-dev.sh
+
+# 帮助命令
+help:
+	@echo "$(BLUE)╔════════════════════════════════════════════════════════╗$(NC)"
+	@echo "$(BLUE)║        🎮 Battle City - 完整开发环境                  ║$(NC)"
+	@echo "$(BLUE)╚════════════════════════════════════════════════════════╝$(NC)"
+	@echo ""
+	@echo "$(GREEN)🚀 一键启动 (推荐):$(NC)"
+	@echo "  make                  - 启动 C++ 后端 + React 前端 ⭐"
+	@echo ""
+	@echo "$(GREEN)后端命令 (C++):$(NC)"
+	@echo "  make backend          - 编译并运行 C++ 后端 (port 3000, 日志到终端)"
+	@echo "  make run-backend      - 仅运行已编译的后端"
+	@echo "  make cpp-debug        - 调试编译 C++"
+	@echo ""
+	@echo "$(GREEN)前端命令 (React):$(NC)"
+	@echo "  make frontend         - 运行 React 前端 (port 5173) ⭐"
+	@echo "  make dev              - 同上，启动开发服务器"
 	@echo "  make build            - 构建 React 生产版本"
-	@echo "  make build-wasm       - 编译 C++ 为 WebAssembly"
-	@echo "  make clean            - 清理所有构建输出"
 	@echo ""
-	@echo "$(GREEN)开发命令:$(NC)"
-	@echo "  make dev              - 启动 React 开发服务器（热重载）"
-	@echo "  make run-backend      - 启动 C++ 后端服务器"
-	@echo "  make stop             - 停止所有服务"
-	@echo ""
-	@echo "$(GREEN)测试和检查:$(NC)"
-	@echo "  make test             - 运行单元测试"
-	@echo "  make check            - TypeScript 类型检查"
-	@echo "  make check-env        - 检查环境依赖"
+	@echo "$(GREEN)组合命令:$(NC)"
+	@echo "  make run-all          - 后台启动后端 + 前端（两个终端）"
 	@echo ""
 	@echo "$(GREEN)工具命令:$(NC)"
-	@echo "  make lint             - 运行代码检查"
-	@echo "  make format           - 格式化代码"
+	@echo "  make test             - 运行单元测试"
+	@echo "  make check            - TypeScript 类型检查"
+	@echo "  make clean            - 清理所有构建输出"
+	@echo "  make check-env        - 检查环境依赖"
+	@echo "  make status           - 查看项目状态"
+	@echo ""
+	@echo "$(GREEN)帮助:$(NC)"
+	@echo "  make help             - 显示此帮助信息"
 	@echo "  make status           - 查看项目状态"
 	@echo ""
 
@@ -105,6 +121,9 @@ dev: check-env install
 	else \
 		npm run dev; \
 	fi
+
+# 运行前端界面（与 dev 相同）
+frontend: dev
 
 # ============================================================================
 # 后台运行
@@ -163,28 +182,44 @@ stop:
 # C++ 后端命令
 # ============================================================================
 
-# 编译 C++ 后端
+# 编译并运行 C++ 后端（带日志到终端）
 backend: check-env
 	@echo "$(BLUE)🔨 编译 C++ 后端服务器$(NC)"
 	@echo ""
-	@mkdir -p build
-	@cd build && cmake .. && make
+	@cd cpp && make build
 	@echo ""
 	@echo "$(GREEN)✅ 后端编译完成$(NC)"
-	@echo "二进制文件: ./build/battle-city-server"
+	@echo ""
+	@echo "$(BLUE)🚀 启动 C++ 后端服务器 (监听 :3000)$(NC)"
+	@echo "$(YELLOW)按 Ctrl+C 停止服务器$(NC)"
+	@echo ""
+	@./cpp/bin/battle-city-server
+
+# 调试编译 C++
+cpp-debug: check-env
+	@echo "$(BLUE)🔍 调试编译 C++ 后端$(NC)"
+	@echo ""
+	@cd cpp && make debug
+	@echo ""
+	@echo "$(GREEN)✅ 调试编译完成$(NC)"
 	@echo ""
 
-# 运行 C++ 后端服务器
-run-backend: backend
+# 运行 C++ 后端服务器（仅运行，不编译）
+run-backend: 
+	@if [ ! -f "./cpp/bin/battle-city-server" ]; then \
+		echo "$(RED)❌ 后端未编译，请先运行 make backend$(NC)"; \
+		exit 1; \
+	fi
 	@echo "$(BLUE)🚀 启动 C++ 后端服务器$(NC)"
+	@echo "$(YELLOW)按 Ctrl+C 停止服务器$(NC)"
 	@echo ""
-	@./build/battle-city-server
+	@./cpp/bin/battle-city-server
 
 # 后台运行 C++ 后端
 run-backend-daemon: backend
 	@echo "$(BLUE)🚀 在后台启动 C++ 后端服务器$(NC)"
 	@echo ""
-	@nohup ./build/battle-city-server > /tmp/battle-city-server.log 2>&1 &
+	@nohup ./cpp/bin/battle-city-server > /tmp/battle-city-server.log 2>&1 &
 	@sleep 1
 	@echo "$(GREEN)✅ 后端已启动 (PID: $$(pgrep -f battle-city-server))$(NC)"
 	@echo "监听: http://localhost:3000"

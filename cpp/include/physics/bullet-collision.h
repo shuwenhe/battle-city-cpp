@@ -1,7 +1,7 @@
 #pragma once                        // 防止头文件被多次包含
 
-#include "types.h"                  // 包含基本类型定义
-#include "geometry.h"               // 包含几何工具函数
+#include "common/types.h"                  // 包含基本类型定义
+#include "physics/geometry.h"               // 包含几何工具函数
 #include <vector>                   // 包含动态数组容器
 
 // ============================================================================

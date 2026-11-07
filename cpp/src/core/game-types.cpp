@@ -2,7 +2,7 @@
 // game-types.cpp - 游戏基础类型的实现
 // ============================================================================
 
-#include "game-types.h"
+#include "core/game-types.h"
 
 // 注意：该文件主要是头文件中常量的定义
 // 大多数内容已经在头文件 game-types.h 中用 constexpr 定义

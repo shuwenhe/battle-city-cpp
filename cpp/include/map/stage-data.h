@@ -8,8 +8,8 @@
 #ifndef STAGE_DATA_H
 #define STAGE_DATA_H
 
-#include "game-types.h"
-#include "game-state.h"
+#include "core/game-types.h"
+#include "core/game-state.h"
 #include <vector>
 #include <string>
 #include <array>
