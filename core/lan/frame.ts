@@ -19,7 +19,7 @@ import type {
   ScorePopupView,
   TankView,
 } from '../render/Renderer'
-import type { BattleView } from '../../apps/frontend/ui/BattleOverlay'
+import type { BattleView } from '../../apps/frontend/BattleOverlay'
 
 const SIDES: TankSide[] = ['player', 'bot']
 const COLORS: TankColor[] = ['yellow', 'green', 'silver', 'red']
