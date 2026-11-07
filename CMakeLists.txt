@@ -53,6 +53,16 @@ if(EMSCRIPTEN)
   target_link_options(battle-engine-wasm PRIVATE ${EMSCRIPTEN_FLAGS})
 endif()
 
+# C++ Backend Server
+if(NOT EMSCRIPTEN)
+  add_executable(battle-city-server src/server.cpp ${SOURCES})
+  target_include_directories(battle-city-server PUBLIC include)
+  target_include_directories(battle-city-server PUBLIC external)
+  
+  # Link pthread for threading
+  target_link_libraries(battle-city-server PRIVATE pthread)
+endif()
+
 # Tests
 if(NOT EMSCRIPTEN)
   enable_testing()

@@ -9,4 +9,6 @@
 #   fsevents —— macOS 原生文件监听，缺失时 chokidar 自动回退（dev server 照常），禁止
 allowBuilds:
   esbuild: true
+  ffi-napi: set this to true or false
   fsevents: false
+  ref-napi: set this to true or false
