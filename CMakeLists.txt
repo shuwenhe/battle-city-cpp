@@ -19,21 +19,21 @@ set(SOURCES
 )
 
 set(HEADERS
-  cpp/include/geometry.h
-  cpp/include/collision.h
-  cpp/include/bullet-collision.h
-  cpp/include/random.h
-  cpp/include/types.h
+  include/geometry.h
+  include/collision.h
+  include/bullet-collision.h
+  include/random.h
+  include/types.h
 )
 
 # Create library
 add_library(battle-engine-core ${SOURCES} ${HEADERS})
-target_include_directories(battle-engine-core PUBLIC cpp/include)
+target_include_directories(battle-engine-core PUBLIC include)
 
 # Emscripten bindings
 if(EMSCRIPTEN)
   add_executable(battle-engine-wasm cpp/src/bindings.cpp ${SOURCES})
-  target_include_directories(battle-engine-wasm PUBLIC cpp/include)
+  target_include_directories(battle-engine-wasm PUBLIC include)
   
   set(EMSCRIPTEN_FLAGS
     -s EXPORTED_FUNCTIONS="['_malloc','_free']"
@@ -51,8 +51,8 @@ if(NOT EMSCRIPTEN)
   enable_testing()
   add_executable(geometry-test cpp/test/geometry.test.cpp cpp/src/geometry.cpp)
   add_executable(collision-test cpp/test/collision.test.cpp cpp/src/geometry.cpp cpp/src/collision.cpp)
-  target_include_directories(geometry-test PRIVATE cpp/include)
-  target_include_directories(collision-test PRIVATE cpp/include)
+  target_include_directories(geometry-test PRIVATE include)
+  target_include_directories(collision-test PRIVATE include)
   add_test(NAME GeometryTest COMMAND geometry-test)
   add_test(NAME CollisionTest COMMAND collision-test)
 endif()

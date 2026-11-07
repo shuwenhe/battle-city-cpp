@@ -6,7 +6,7 @@
 
 ## ✅ 已注释的文件清单
 
-### 1. C++ 头文件 (cpp/include/)
+### 1. C++ 头文件 (include/)
 
 #### `types.h` - 类型定义
 **内容**: 所有基本类型、枚举、结构体定义
@@ -297,9 +297,9 @@ TypeScript API: wasm-engine.ts
 ## 🎓 学习路径
 
 ### 入门
-1. 阅读 [types.h](/Users/shuwen/battle-city-cpp/cpp/include/types.h) - 了解数据结构
-2. 阅读 [geometry.h](/Users/shuwen/battle-city-cpp/cpp/include/geometry.h) - 理解几何基础
-3. 阅读 [collision.h](/Users/shuwen/battle-city-cpp/cpp/include/collision.h) - 学习碰撞系统
+1. 阅读 [types.h](/Users/shuwen/battle-city-cpp/include/types.h) - 了解数据结构
+2. 阅读 [geometry.h](/Users/shuwen/battle-city-cpp/include/geometry.h) - 理解几何基础
+3. 阅读 [collision.h](/Users/shuwen/battle-city-cpp/include/collision.h) - 学习碰撞系统
 
 ### 进阶
 1. 学习 [collision.cpp](/Users/shuwen/battle-city-cpp/cpp/src/collision.cpp) - 实现细节

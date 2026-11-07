@@ -4,24 +4,24 @@
 
 ### 🚀 我想了解游戏如何工作
 **阅读顺序**:
-1. [types.h](/Users/shuwen/battle-city-cpp/cpp/include/types.h) - 了解所有数据类型
-2. [geometry.h](/Users/shuwen/battle-city-cpp/cpp/include/geometry.h) - 了解几何计算
-3. [collision.h](/Users/shuwen/battle-city-cpp/cpp/include/collision.h) - 了解碰撞检测
+1. [types.h](/Users/shuwen/battle-city-cpp/include/types.h) - 了解所有数据类型
+2. [geometry.h](/Users/shuwen/battle-city-cpp/include/geometry.h) - 了解几何计算
+3. [collision.h](/Users/shuwen/battle-city-cpp/include/collision.h) - 了解碰撞检测
 
 ### 🎮 我想修改碰撞规则
 **查看文件**:
-- [collision.h](/Users/shuwen/battle-city-cpp/cpp/include/collision.h) - 接口定义
+- [collision.h](/Users/shuwen/battle-city-cpp/include/collision.h) - 接口定义
 - [collision.cpp](/Users/shuwen/battle-city-cpp/cpp/src/collision.cpp) - 实现逻辑
-- [types.h](/Users/shuwen/battle-city-cpp/cpp/include/types.h) 第 1-60 行 - 常数定义
+- [types.h](/Users/shuwen/battle-city-cpp/include/types.h) 第 1-60 行 - 常数定义
 
 ### 💥 我想修改子弹物理
 **查看文件**:
-- [bullet-collision.h](/Users/shuwen/battle-city-cpp/cpp/include/bullet-collision.h) - 数据结构
+- [bullet-collision.h](/Users/shuwen/battle-city-cpp/include/bullet-collision.h) - 数据结构
 - [bullet-collision.cpp](/Users/shuwen/battle-city-cpp/cpp/src/bullet-collision.cpp) - 所有实现
 
 ### 🔀 我想修改随机行为
 **查看文件**:
-- [random.h](/Users/shuwen/battle-city-cpp/cpp/include/random.h) - 算法定义
+- [random.h](/Users/shuwen/battle-city-cpp/include/random.h) - 算法定义
 - [random.cpp](/Users/shuwen/battle-city-cpp/cpp/src/random.cpp) - 初始化
 
 ### 🌉 我想连接 TypeScript 和 C++
