@@ -1,40 +1,33 @@
 # ============================================================================
-# Battle City - Root Makefile
-# 代理到 .config/Makefile 的所有命令
+# Battle City - Makefile
+# 直接运行游戏：make
 # ============================================================================
 
-# 默认目标
-.DEFAULT_GOAL := help
+.DEFAULT_GOAL := game
 
-# 将所有目标代理到 .config/Makefile
-%:
-	@$(MAKE) -f .config/Makefile $@
-
-# 显示帮助
-.PHONY: help
-help:
-	@$(MAKE) -f .config/Makefile help
-
-# 直接定义常用目标以确保快速调用
-.PHONY: game dev backend build test clean install
-
+# 运行游戏（启动开发服务器）
+.PHONY: game
 game:
-	@$(MAKE) -f .config/Makefile game
+	@cd .config && $(MAKE) -f Makefile dev
 
-dev:
-	@$(MAKE) -f .config/Makefile dev
+# 其他常用命令
+.PHONY: help build test clean backend dev
 
-backend:
-	@$(MAKE) -f .config/Makefile backend
+help:
+	@cd .config && $(MAKE) -f Makefile help
 
 build:
-	@$(MAKE) -f .config/Makefile build
+	@cd .config && $(MAKE) -f Makefile build
 
 test:
-	@$(MAKE) -f .config/Makefile test
+	@cd .config && $(MAKE) -f Makefile test
 
 clean:
-	@$(MAKE) -f .config/Makefile clean
+	@cd .config && $(MAKE) -f Makefile clean
 
-install:
-	@$(MAKE) -f .config/Makefile install
+backend:
+	@cd .config && $(MAKE) -f Makefile backend
+
+dev:
+	@cd .config && $(MAKE) -f Makefile dev
+
