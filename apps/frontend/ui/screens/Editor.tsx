@@ -4,9 +4,9 @@ import {
   FIELD_BLOCK_SIZE as FBZ,
   TANK_LEVELS,
   ZOOM_LEVEL,
-} from '../../../engine/constants'
-import type { MapItemType, TankLevel } from '../../../engine/types'
-import { stages as builtinStages } from '../../../stages'
+} from '../../../../core/engine/constants'
+import type { MapItemType, TankLevel } from '../../../../core/engine/types'
+import { stages as builtinStages } from '../../../../core/stages'
 import {
   EMPTY_ITEM,
   editorToRaw,

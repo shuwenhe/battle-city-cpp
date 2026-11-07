@@ -6,7 +6,7 @@ import {
   drawRiver,
   drawSnow,
   drawSteel,
-} from '../../../render/sprites/terrain'
+} from '../../../../core/render/sprites/terrain'
 import SpriteImage from '../pixel/SpriteImage'
 
 export type TerrainIconName = 'brick' | 'steel' | 'river' | 'snow' | 'forest' | 'eagle'

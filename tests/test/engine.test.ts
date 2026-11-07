@@ -1,9 +1,9 @@
 import { describe, expect, it } from 'vitest'
-import Bullet, { resetBulletIds } from '../engine/entities/Bullet'
-import ScorePopup from '../engine/entities/ScorePopup'
-import Tank from '../engine/entities/Tank'
-import TerrainMap from '../engine/map/TerrainMap'
-import { expandBots } from '../engine/map/parseStage'
+import Bullet, { resetBulletIds } from '../../core/engine/entities/Bullet'
+import ScorePopup from '../../core/engine/entities/ScorePopup'
+import Tank from '../../core/engine/entities/Tank'
+import TerrainMap from '../../core/engine/map/TerrainMap'
+import { expandBots } from '../../core/engine/map/parseStage'
 import {
   ceil8,
   floor8,
@@ -11,21 +11,21 @@ import {
   isPerpendicular,
   round8,
   testCollide,
-} from '../engine/physics/geometry'
-import { canTankMove } from '../engine/physics/collision'
-import { getBulletCollision, getMBR, spreadBullet } from '../engine/physics/bullet-collision'
-import { buildSpots } from '../engine/ai/spots'
-import { findPath } from '../engine/ai/pathfinding'
-import PathFollower from '../engine/ai/path-follower'
-import { getTankSpot, spotToTankPos } from '../engine/ai/spots'
-import { getAIFireCount, getFireResist } from '../engine/ai/fire-estimate'
-import { updateBullets, type BulletTankHit } from '../engine/systems/bullet'
-import { fireTank } from '../engine/systems/fire'
-import { STEP_MS } from '../engine/Game'
-import { applyInput, applyPlayerMove } from '../engine/systems/movement'
-import { bulletInterval, bulletLimit, bulletPower, moveSpeed } from '../engine/values'
-import type { Input, RawStageConfig, SoundName } from '../engine/types'
-import { SNOW_SLIDE_LOCK, SNOW_SLIDE_START } from '../engine/constants'
+} from '../../core/engine/physics/geometry'
+import { canTankMove } from '../../core/engine/physics/collision'
+import { getBulletCollision, getMBR, spreadBullet } from '../../core/engine/physics/bullet-collision'
+import { buildSpots } from '../../core/engine/ai/spots'
+import { findPath } from '../../core/engine/ai/pathfinding'
+import PathFollower from '../../core/engine/ai/path-follower'
+import { getTankSpot, spotToTankPos } from '../../core/engine/ai/spots'
+import { getAIFireCount, getFireResist } from '../../core/engine/ai/fire-estimate'
+import { updateBullets, type BulletTankHit } from '../../core/engine/systems/bullet'
+import { fireTank } from '../../core/engine/systems/fire'
+import { STEP_MS } from '../../core/engine/Game'
+import { applyInput, applyPlayerMove } from '../../core/engine/systems/movement'
+import { bulletInterval, bulletLimit, bulletPower, moveSpeed } from '../../core/engine/values'
+import type { Input, RawStageConfig, SoundName } from '../../core/engine/types'
+import { SNOW_SLIDE_LOCK, SNOW_SLIDE_START } from '../../core/engine/constants'
 
 /** 构建一张 13×13 地图，overrides 指定 "row,col" → item 编码 */
 function makeMap(overrides: Record<string, string> = {}): TerrainMap {

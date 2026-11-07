@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react'
-import { BLOCK_SIZE, TANK_COLOR_SCHEMES } from '../../../engine/constants'
-import type { Direction, TankSide as Side, TankColor, TankLevel } from '../../../engine/types'
+import { BLOCK_SIZE, TANK_COLOR_SCHEMES } from '../../../../core/engine/constants'
+import type { Direction, TankSide as Side, TankColor, TankLevel } from '../../../../core/engine/types'
 
 // 坦克像素 SVG（静态版，不含动画 Timing）。
 

@@ -1,12 +1,12 @@
 import { describe, expect, it } from 'vitest'
-import { parseStage } from '../engine/map/parseStage'
-import { stages } from '../stages'
+import { parseStage } from '../../core/engine/map/parseStage'
+import { stages } from '../../core/stages'
 import {
   editorToRaw,
   emptyEditorStage,
   rawToEditor,
   type MapItem,
-} from '../frontend/ui/editor/editorStage'
+} from '../../apps/frontend/ui/editor/editorStage'
 
 describe('editorStage', () => {
   it('内置关卡经编辑器往返后地形与敌人不变', () => {

@@ -1,10 +1,10 @@
 import { beforeEach, describe, expect, it } from 'vitest'
-import { STEP_MS } from '../engine/Game'
-import GameSession from '../engine/GameSession'
-import { PLAYER_SPAWN_POS } from '../engine/constants'
+import { STEP_MS } from '../../core/engine/Game'
+import GameSession from '../../core/engine/GameSession'
+import { PLAYER_SPAWN_POS } from '../../core/engine/constants'
 import { seededRandom } from './random'
-import { directionCodes, PLAYER1_CONTROL } from '../input/bindings'
-import { guestMirror, handleMessage, lanSocketUrl, useLanStore } from '../lan/client'
+import { directionCodes, PLAYER1_CONTROL } from '../../core/input/bindings'
+import { guestMirror, handleMessage, lanSocketUrl, useLanStore } from '../../core/lan/client'
 import {
   FrameMirror,
   packBits,
@@ -12,17 +12,17 @@ import {
   unpackBits,
   type FrameMessage,
   type SceneFrame,
-} from '../lan/frame'
+} from '../../core/lan/frame'
 import {
   decodeInput,
   encodeInput,
   HostInput,
   REMOTE_CONTROL,
   type InputSample,
-} from '../lan/input'
-import { nextPausedBy } from '../lan/pause'
-import { stages } from '../stages'
-import { useUIStore } from '../frontend/ui/store'
+} from '../../core/lan/input'
+import { nextPausedBy } from '../../core/lan/pause'
+import { stages } from '../../core/stages'
+import { useUIStore } from '../../apps/frontend/ui/store'
 import { makeStage } from './helpers'
 
 describe('输入编码', () => {

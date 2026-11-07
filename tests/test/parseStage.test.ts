@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest'
-import { N_MAP } from '../engine/constants'
-import { parseBrickBits, parseStage } from '../engine/map/parseStage'
-import { stages } from '../stages'
+import { N_MAP } from '../../core/engine/constants'
+import { parseBrickBits, parseStage } from '../../core/engine/map/parseStage'
+import { stages } from '../../core/stages'
 
 describe('parseBrickBits', () => {
   it('展开 1 位短格式到 4 个象限', () => {
