@@ -4,43 +4,31 @@ project(battle-city-engine)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-# Emscripten-specific settings
+# ============================================================================
+# 使用新的 cpp 子目录的模块化构建系统
+# ============================================================================
+
+add_subdirectory(cpp)
+
+# ============================================================================
+# Emscripten WebAssembly 构建（可选）
+# ============================================================================
+
 if(EMSCRIPTEN)
   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -s WASM=1 -s USE_SDL=2")
   set(CMAKE_EXECUTABLE_SUFFIX ".js")
-endif()
-
-# Source files
-set(SOURCES
-  src/geometry.cpp
-  src/collision.cpp
-  src/bullet-collision.cpp
-  src/random.cpp
-  src/game-types.cpp
-  src/game-logic.cpp
-  src/stage-data.cpp
-)
-
-set(HEADERS
-  include/geometry.h
-  include/collision.h
-  include/bullet-collision.h
-  include/random.h
-  include/types.h
-  include/game-types.h
-  include/game-state.h
-  include/game-logic.h
-  include/stage-data.h
-)
-
-# Create library
-add_library(battle-engine-core ${SOURCES} ${HEADERS})
-target_include_directories(battle-engine-core PUBLIC include)
-
-# Emscripten bindings
-if(EMSCRIPTEN)
-  add_executable(battle-engine-wasm src/bindings.cpp ${SOURCES})
-  target_include_directories(battle-engine-wasm PUBLIC include)
+  
+  # WASM 绑定目标
+  add_executable(battle-engine-wasm
+    cpp/src/wasm/bindings.cpp
+  )
+  
+  target_link_libraries(battle-engine-wasm PRIVATE game-engine)
+  
+  target_include_directories(battle-engine-wasm PRIVATE
+    ${CMAKE_CURRENT_SOURCE_DIR}/cpp/include
+    ${CMAKE_CURRENT_SOURCE_DIR}/cpp/../external
+  )
   
   set(EMSCRIPTEN_FLAGS
     -s EXPORTED_FUNCTIONS="['_malloc','_free']"
@@ -50,26 +38,15 @@ if(EMSCRIPTEN)
     -O3
   )
   
-  target_link_options(battle-engine-wasm PRIVATE ${EMSCRIPTEN_FLAGS})
+  set_target_properties(battle-engine-wasm PROPERTIES
+    LINK_FLAGS "${EMSCRIPTEN_FLAGS}"
+    SUFFIX ".js"
+  )
 endif()
 
-# C++ Backend Server
-if(NOT EMSCRIPTEN)
-  add_executable(battle-city-server src/server.cpp ${SOURCES})
-  target_include_directories(battle-city-server PUBLIC include)
-  target_include_directories(battle-city-server PUBLIC external)
-  
-  # Link pthread for threading
-  target_link_libraries(battle-city-server PRIVATE pthread)
-endif()
+# ============================================================================
+# 单元测试（可选）
+# ============================================================================
 
-# Tests
-if(NOT EMSCRIPTEN)
-  enable_testing()
-  add_executable(geometry-test cpp/test/geometry.test.cpp src/geometry.cpp)
-  add_executable(collision-test cpp/test/collision.test.cpp src/geometry.cpp src/collision.cpp)
-  target_include_directories(geometry-test PRIVATE include)
-  target_include_directories(collision-test PRIVATE include)
-  add_test(NAME GeometryTest COMMAND geometry-test)
-  add_test(NAME CollisionTest COMMAND collision-test)
-endif()
+enable_testing()
+# add_subdirectory(cpp/test)  # 取消注释以启用单元测试

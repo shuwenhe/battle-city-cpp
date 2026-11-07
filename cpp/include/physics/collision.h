@@ -1,7 +1,7 @@
 #pragma once                        // 防止头文件被多次包含
 
-#include "types.h"                  // 包含基本类型定义
-#include "geometry.h"               // 包含几何工具函数
+#include "common/types.h"                  // 包含基本类型定义
+#include "physics/geometry.h"               // 包含几何工具函数
 #include <vector>                   // 包含动态数组容器
 #include <optional>                 // 包含可选值容器
 
@@ -79,13 +79,13 @@ inline bool is_in_field(const Rect& rect) {  // 定义边界检查函数
  */
 inline bool is_in_front(const Rect& other, const Tank& tank) {  // 定义前方检查函数
   switch (tank.direction) {      // 根据坦克朝向分类处理
-    case Direction::LEFT:        // 坦克向左时
+    case Direction::Left:        // 坦克向左时
       return other.x < tank.x;   // 检查目标是否在坦克左侧
-    case Direction::RIGHT:       // 坦克向右时
+    case Direction::Right:       // 坦克向右时
       return other.x > tank.x;   // 检查目标是否在坦克右侧
-    case Direction::UP:          // 坦克向上时
+    case Direction::Up:          // 坦克向上时
       return other.y < tank.y;   // 检查目标是否在坦克上侧
-    case Direction::DOWN:        // 坦克向下时
+    case Direction::Down:        // 坦克向下时
       return other.y > tank.y;   // 检查目标是否在坦克下侧
     default:                     // 未知方向
       return false;              // 返回false表示未知状态

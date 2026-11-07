@@ -8,7 +8,7 @@
 #ifndef GAME_STATE_H
 #define GAME_STATE_H
 
-#include "game-types.h"
+#include "core/game-types.h"
 #include <vector>
 #include <optional>
 
