@@ -29,12 +29,12 @@
   },
   "scripts": {
     "dev": "vite",
-    "build": "tsc --noEmit && vite build --base ./",
+    "build": "tsc -p .config/tsconfig.json --noEmit && vite build --base ./",
     "preview": "vite preview",
     "test": "vitest run",
     "test:watch": "vitest",
     "arena": "ARENA=1 vitest run test/arena.test.ts",
-    "build:npm": "tsc --noEmit && vite build --base ./ --outDir www --emptyOutDir",
+    "build:npm": "tsc -p .config/tsconfig.json --noEmit && vite build --base ./ --outDir www --emptyOutDir",
     "prepack": "npm run build:npm"
   },
   "devDependencies": {
