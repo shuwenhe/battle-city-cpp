@@ -6,10 +6,10 @@
 // 方向旋转映射 - 用于将坐标系转换为以UP方向为基准
 // ============================================================================
 const Direction ROTATE_DIR[] = {    // 创建方向旋转常量数组
-  Direction::RIGHT,                 // UP方向旋转得到RIGHT(顺时针90°)
-  Direction::DOWN,                  // DOWN方向旋转(未使用)
-  Direction::LEFT,                  // LEFT方向旋转(未使用)
-  Direction::UP,                    // RIGHT方向旋转(未使用)
+  Direction::Right,                 // UP方向旋转得到RIGHT(顺时针90°)
+  Direction::Down,                  // DOWN方向旋转(未使用)
+  Direction::Left,                  // LEFT方向旋转(未使用)
+  Direction::Up,                    // RIGHT方向旋转(未使用)
 };
 
 /**
@@ -19,10 +19,10 @@ const Direction ROTATE_DIR[] = {    // 创建方向旋转常量数组
  */
 Direction rotate_direction(Direction dir) {  // 定义方向旋转函数
   switch (dir) {                    // 根据方向进行分支处理
-    case Direction::UP: return Direction::RIGHT;    // UP旋转90°变成RIGHT
-    case Direction::RIGHT: return Direction::DOWN;  // RIGHT旋转90°变成DOWN
-    case Direction::DOWN: return Direction::LEFT;   // DOWN旋转90°变成LEFT
-    case Direction::LEFT: return Direction::UP;     // LEFT旋转90°变成UP
+    case Direction::Up: return Direction::Right;    // UP旋转90°变成RIGHT
+    case Direction::Right: return Direction::Down;  // RIGHT旋转90°变成DOWN
+    case Direction::Down: return Direction::Left;   // DOWN旋转90°变成LEFT
+    case Direction::Left: return Direction::Up;     // LEFT旋转90°变成UP
     default: return dir;            // 未知方向返回原值
   }
 }
@@ -67,7 +67,7 @@ Rect spread_bullet(const Bullet& bullet) {  // 定义子弹扩散计算函数
   Rect r = bullet.rect();          // 获取子弹的碰撞矩形
   f32 v = BULLET_EXPLOSION_SPREAD + BULLET_EXPLOSION_THRESHOLD;  // 计算扩散距离
   
-  if (bullet.direction == Direction::UP || bullet.direction == Direction::DOWN) {  // 如果子弹向上或向下
+  if (bullet.direction == Direction::Up || bullet.direction == Direction::Down) {  // 如果子弹向上或向下
     r.x -= v;                      // 从左侧扩展v单位
     r.w += 2.0f * v;               // 宽度增加2v(左右各扩展v)
     r.y -= BULLET_EXPLOSION_THRESHOLD;  // 从上侧稍微缩小
@@ -96,18 +96,18 @@ Rect spread_bullet(const Bullet& bullet) {  // 定义子弹扩散计算函数
  */
 f32 calculate_hit_time(const Bullet& b1, const Bullet& b2) {  // 定义碰撞时间计算函数
   // 所有计算都假设b1的方向为UP(向上)
-  if (b1.direction != Direction::UP) {  // 如果b1不向上
+  if (b1.direction != Direction::Up) {  // 如果b1不向上
     // 需要将坐标系旋转使b1方向变为UP
     // 为简化实现,这里只在主情况下实现完整算法
     return -1.0f;                  // TODO: 实现坐标旋转
   }
   
-  if (b2.direction == Direction::DOWN) {  // 如果b2向下(与b1迎面)
+  if (b2.direction == Direction::Down) {  // 如果b2向下(与b1迎面)
     // 迎面碰撞情况
     f32 relative_speed = b1.speed + b2.speed;  // 计算相对速度(两个速度相加)
     if (relative_speed < 0.01f) return -1.0f;  // 如果相对速度过小则不碰撞
     return (b1.last_y - b2.last_y - BULLET_SIZE) / relative_speed;  // 计算碰撞时间
-  } else if (b2.direction == Direction::UP) {  // 如果b2向上(与b1同向)
+  } else if (b2.direction == Direction::Up) {  // 如果b2向上(与b1同向)
     // 同向运动情况
     if (abs_val(b1.last_y - b2.last_y) < 0.01f) {  // 如果两颗子弹Y坐标相同
       return -1.0f;               // 平行运动,不会碰撞
@@ -120,7 +120,7 @@ f32 calculate_hit_time(const Bullet& b1, const Bullet& b2) {  // 定义碰撞时
     } else {                       // b1在b2下方
       return calculate_hit_time(b2, b1);  // 交换参数重新计算
     }
-  } else if (b2.direction == Direction::LEFT) {  // 如果b2向左(垂直碰撞)
+  } else if (b2.direction == Direction::Left) {  // 如果b2向左(垂直碰撞)
     // 垂直碰撞情况(b1向上,b2向左)
     Rect hit_area = {b1.x, b2.y, BULLET_SIZE, BULLET_SIZE};  // 定义碰撞区域
     
@@ -187,13 +187,13 @@ Point move_from_last(const Bullet& bullet, f32 time_ms) {  // 定义位置计算
   f32 distance = bullet.speed * time_ms;  // 计算子弹移动的距离
   
   switch (bullet.direction) {      // 根据子弹方向分别计算新位置
-    case Direction::UP:            // 向上移动
+    case Direction::Up:            // 向上移动
       return {bullet.last_x, bullet.last_y - distance};  // Y坐标减少(向上)
-    case Direction::DOWN:          // 向下移动
+    case Direction::Down:          // 向下移动
       return {bullet.last_x, bullet.last_y + distance};  // Y坐标增加(向下)
-    case Direction::LEFT:          // 向左移动
+    case Direction::Left:          // 向左移动
       return {bullet.last_x - distance, bullet.last_y};  // X坐标减少(向左)
-    case Direction::RIGHT:         // 向右移动
+    case Direction::Right:         // 向右移动
       return {bullet.last_x + distance, bullet.last_y};  // X坐标增加(向右)
     default:                       // 未知方向
       return {bullet.last_x, bullet.last_y};  // 返回上一帧位置
@@ -249,28 +249,28 @@ const BulletCollisionResult* get_bullet_collision(  // 定义碰撞检测函数
  */
 Point explosion_pos_from_rects(const Bullet& bullet, const std::vector<Rect>& rects) {  // 定义爆炸位置计算函数
   switch (bullet.direction) {      // 根据子弹方向分别处理
-    case Direction::RIGHT: {        // 子弹向右飞行
+    case Direction::Right: {        // 子弹向右飞行
       f32 left = 1e6f;              // 初始化左边界为极大值
       for (const auto& r : rects) {  // 遍历所有碰撞矩形
         left = std::min(left, r.x);  // 找到最左的矩形边界
       }
       return {left - BULLET_SIZE, bullet.y};  // 爆炸位置在矩形左侧
     }
-    case Direction::LEFT: {         // 子弹向左飞行
+    case Direction::Left: {         // 子弹向左飞行
       f32 right = -1e6f;            // 初始化右边界为极小值
       for (const auto& r : rects) {  // 遍历所有碰撞矩形
         right = std::max(right, r.x + r.w);  // 找到最右的矩形边界
       }
       return {right, bullet.y};     // 爆炸位置在矩形右侧
     }
-    case Direction::UP: {           // 子弹向上飞行
+    case Direction::Up: {           // 子弹向上飞行
       f32 bottom = -1e6f;           // 初始化下边界为极小值
       for (const auto& r : rects) {  // 遍历所有碰撞矩形
         bottom = std::max(bottom, r.y + r.h);  // 找到最下的矩形边界
       }
       return {bullet.x, bottom};    // 爆炸位置在矩形下侧
     }
-    case Direction::DOWN: {         // 子弹向下飞行
+    case Direction::Down: {         // 子弹向下飞行
       f32 top = 1e6f;               // 初始化上边界为极大值
       for (const auto& r : rects) {  // 遍历所有碰撞矩形
         top = std::min(top, r.y);   // 找到最上的矩形边界
