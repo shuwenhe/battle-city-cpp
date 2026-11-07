@@ -8,7 +8,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 # 使用新的 cpp 子目录的模块化构建系统
 # ============================================================================
 
-add_subdirectory(cpp)
+add_subdirectory(backend)
 
 # ============================================================================
 # Emscripten WebAssembly 构建（可选）

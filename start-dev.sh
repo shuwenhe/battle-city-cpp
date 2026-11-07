@@ -39,7 +39,7 @@ echo ""
 
 # 启动后端
 echo -e "${COLOR_BLUE}🔨 编译 C++ 后端...${COLOR_RESET}"
-cd cpp
+cd backend
 make clean
 make build
 if [ $? -ne 0 ]; then
@@ -87,7 +87,7 @@ echo -e "  ${COLOR_BLUE}前端:${COLOR_RESET}  http://localhost:5174/battle-city
 echo -e "  ${COLOR_BLUE}后端:${COLOR_RESET}  http://localhost:3000/health"
 echo -e "  ${COLOR_BLUE}API:${COLOR_RESET}   http://localhost:3000/api/game-state"
 echo ""
-echo -e "  ${COLOR_YELLOW}启动后端:${COLOR_RESET} cd cpp && make run"
+echo -e "  ${COLOR_YELLOW}启动后端:${COLOR_RESET} cd backend && make run"
 echo -e "  ${COLOR_YELLOW}查看日志:${COLOR_RESET} tail -f /tmp/cpp-server.log"
 echo -e "  ${COLOR_YELLOW}停止服务:${COLOR_RESET} kill $CPP_PID"
 echo ""
