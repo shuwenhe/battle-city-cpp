@@ -193,7 +193,7 @@ backend: check-env
 	@echo "$(BLUE)🚀 启动 C++ 后端服务器 (监听 :3000)$(NC)"
 	@echo "$(YELLOW)按 Ctrl+C 停止服务器$(NC)"
 	@echo ""
-	@./apps/server/bin/battle-city-server
+	@./apps/backend/bin/battle-city-server
 
 # 调试编译 C++
 cpp-debug: check-env
@@ -206,20 +206,20 @@ cpp-debug: check-env
 
 # 运行 C++ 后端服务器（仅运行，不编译）
 run-backend: 
-	@if [ ! -f "./apps/server/bin/battle-city-server" ]; then \
+	@if [ ! -f "./apps/backend/bin/battle-city-server" ]; then \
 		echo "$(RED)❌ 后端未编译，请先运行 make backend$(NC)"; \
 		exit 1; \
 	fi
 	@echo "$(BLUE)🚀 启动 C++ 后端服务器$(NC)"
 	@echo "$(YELLOW)按 Ctrl+C 停止服务器$(NC)"
 	@echo ""
-	@./apps/server/bin/battle-city-server
+	@./apps/backend/bin/battle-city-server
 
 # 后台运行 C++ 后端
 run-backend-daemon: backend
 	@echo "$(BLUE)🚀 在后台启动 C++ 后端服务器$(NC)"
 	@echo ""
-	@nohup ./apps/server/bin/battle-city-server > /tmp/battle-city-server.log 2>&1 &
+	@nohup ./apps/backend/bin/battle-city-server > /tmp/battle-city-server.log 2>&1 &
 	@sleep 1
 	@echo "$(GREEN)✅ 后端已启动 (PID: $$(pgrep -f battle-city-server))$(NC)"
 	@echo "监听: http://localhost:3000"
