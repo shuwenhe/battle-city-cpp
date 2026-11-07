@@ -8,7 +8,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 # 构建 C++ 服务器
 # ============================================================================
 
-add_subdirectory(../apps/server ../apps/server/build)
+add_subdirectory(../apps/backend ../apps/backend/build)
 
 # ============================================================================
 # Emscripten WebAssembly 构建（可选）
