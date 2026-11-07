@@ -1,6 +1,6 @@
 // React Hook for game engine backend communication
 import { useEffect, useRef, useState, useCallback } from 'react';
-import gameApi, { GameState, GameInput } from '../api/gameApi';
+import gameApi, { GameState } from '../api/gameApi';
 
 export function useGameBackend() {
   const [gameState, setGameState] = useState<GameState | null>(null);
