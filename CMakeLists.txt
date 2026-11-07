@@ -12,10 +12,10 @@ endif()
 
 # Source files
 set(SOURCES
-  cpp/src/geometry.cpp
-  cpp/src/collision.cpp
-  cpp/src/bullet-collision.cpp
-  cpp/src/random.cpp
+  cpp/geometry.cpp
+  cpp/collision.cpp
+  cpp/bullet-collision.cpp
+  cpp/random.cpp
 )
 
 set(HEADERS
@@ -32,7 +32,7 @@ target_include_directories(battle-engine-core PUBLIC include)
 
 # Emscripten bindings
 if(EMSCRIPTEN)
-  add_executable(battle-engine-wasm cpp/src/bindings.cpp ${SOURCES})
+  add_executable(battle-engine-wasm cpp/bindings.cpp ${SOURCES})
   target_include_directories(battle-engine-wasm PUBLIC include)
   
   set(EMSCRIPTEN_FLAGS
@@ -49,8 +49,8 @@ endif()
 # Tests
 if(NOT EMSCRIPTEN)
   enable_testing()
-  add_executable(geometry-test cpp/test/geometry.test.cpp cpp/src/geometry.cpp)
-  add_executable(collision-test cpp/test/collision.test.cpp cpp/src/geometry.cpp cpp/src/collision.cpp)
+  add_executable(geometry-test cpp/test/geometry.test.cpp cpp/geometry.cpp)
+  add_executable(collision-test cpp/test/collision.test.cpp cpp/geometry.cpp cpp/collision.cpp)
   target_include_directories(geometry-test PRIVATE include)
   target_include_directories(collision-test PRIVATE include)
   add_test(NAME GeometryTest COMMAND geometry-test)

@@ -22,11 +22,11 @@ echo "📦 Compiling C++ to WebAssembly..."
 
 emcc \
   -I./include \
-  ./cpp/src/geometry.cpp \
-  ./cpp/src/collision.cpp \
-  ./cpp/src/bullet-collision.cpp \
-  ./cpp/src/random.cpp \
-  ./cpp/src/bindings.cpp \
+  ./cpp/geometry.cpp \
+  ./cpp/collision.cpp \
+  ./cpp/bullet-collision.cpp \
+  ./cpp/random.cpp \
+  ./cpp/bindings.cpp \
   -o build/wasm/battle-engine.js \
   -s WASM=1 \
   -s EXPORTED_FUNCTIONS="['_malloc','_free','_engine_init','_geom_test_rect_collide','_geom_distance','_geom_distance_sq','_bullet_calculate_hit_time','_random_init','_random_next','_random_next_int']" \
