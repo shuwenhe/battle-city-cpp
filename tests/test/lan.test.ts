@@ -22,7 +22,7 @@ import {
 } from '../../core/lan/input'
 import { nextPausedBy } from '../../core/lan/pause'
 import { stages } from '../../core/stages'
-import { useUIStore } from '../../apps/frontend/store'
+import { useUIStore } from '../../app/frontend/store'
 import { makeStage } from './helpers'
 
 describe('输入编码', () => {

@@ -1,5 +1,5 @@
 import { create } from 'zustand'
-import { useUIStore } from '../../apps/frontend/store'
+import { useUIStore } from '../../app/frontend/store'
 import { FrameMirror } from './frame'
 import {
   LAN_INFO_PATH,

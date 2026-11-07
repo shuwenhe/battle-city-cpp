@@ -21,7 +21,7 @@ battle-city-cpp/
 │   ├── CMakeLists.txt
 │   ├── Makefile
 │   └── pnpm-workspace.yaml
-├── apps/                    # 应用层
+├── app/                    # 应用层
 │   ├── frontend/            # React + PixiJS 前端
 │   │   ├── ui/              # React UI 组件
 │   │   └── ...
@@ -51,8 +51,8 @@ battle-city-cpp/
 
 #### 3. 文件移动（157+个文件）
 - [x] 配置文件 → .config/
-- [x] frontend/ → apps/frontend/
-- [x] backend/ → apps/server/
+- [x] frontend/ → app/frontend/
+- [x] backend/ → app/server/
 - [x] 游戏核心模块 → core/{engine,render,audio,input,lan,stages}/
 - [x] test/ → tests/test/
 - [x] bin/ → tools/bin/
@@ -63,7 +63,7 @@ battle-city-cpp/
 #### 4. 配置文件更新
 - [x] vite.config.ts：更新了路径为 ../tools/bin/lan-relay.js, ../package.json, tests/**
 - [x] tsconfig.json：使用 ../ 前缀更新所有 include/exclude 路径
-- [x] CMakeLists.txt：更新 add_subdirectory() 指向 ../apps/server
+- [x] CMakeLists.txt：更新 add_subdirectory() 指向 ../app/server
 - [x] Makefile：所有路径更新为新的目录结构
 - [x] package.json：
   - bin 字段指向 tools/bin/battle-city.js
@@ -71,14 +71,14 @@ battle-city-cpp/
   - 修复了末尾的逗号错误
 
 #### 5. 导入路径修复
-- [x] core/lan/ 文件：../frontend/ → ../../apps/frontend/
+- [x] core/lan/ 文件：../frontend/ → ../../app/frontend/
 - [x] tests/test/ 文件：
   - ../engine/ → ../../core/engine/
   - ../input/ → ../../core/input/
   - ../stages/ → ../../core/stages/
   - ../render/ → ../../core/render/
   - ../lan/ → ../../core/lan/
-  - ../frontend/ui/ → ../../apps/frontend/ui/
+  - ../frontend/ui/ → ../../app/frontend/ui/
   - ../bin/ → ../../tools/bin/
 
 #### 6. 构建和测试验证
