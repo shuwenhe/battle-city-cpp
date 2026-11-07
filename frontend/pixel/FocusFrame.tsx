@@ -1,3 +1,5 @@
+import React from 'react'
+
 /** 键盘焦点框：虚线描边一组控件（卡片、标签组等），单个按钮用 TextButton 的 focused */
 export default function FocusFrame({
   x,

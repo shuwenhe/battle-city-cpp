@@ -1,3 +1,5 @@
+import React from 'react'
+
 // HUD 用的小图标。
 
 /** 玩家命数前的小坦克缩略图（8×8） */
