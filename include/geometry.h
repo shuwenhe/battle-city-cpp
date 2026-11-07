@@ -208,13 +208,13 @@ inline CollisionResult get_aabb_overlap(const Rect& a, const Rect& b) {
  */
 inline Point direction_to_velocity(Direction dir, f32 speed) {
   switch (dir) {
-    case Direction::UP:
+    case Direction::Up:
       return {0, -speed};
-    case Direction::DOWN:
+    case Direction::Down:
       return {0, speed};
-    case Direction::LEFT:
+    case Direction::Left:
       return {-speed, 0};
-    case Direction::RIGHT:
+    case Direction::Right:
       return {speed, 0};
     default:
       return {0, 0};
@@ -226,14 +226,14 @@ inline Point direction_to_velocity(Direction dir, f32 speed) {
  */
 inline Direction opposite_direction(Direction dir) {
   switch (dir) {
-    case Direction::UP:
-      return Direction::DOWN;
-    case Direction::DOWN:
-      return Direction::UP;
-    case Direction::LEFT:
-      return Direction::RIGHT;
-    case Direction::RIGHT:
-      return Direction::LEFT;
+    case Direction::Up:
+      return Direction::Down;
+    case Direction::Down:
+      return Direction::Up;
+    case Direction::Left:
+      return Direction::Right;
+    case Direction::Right:
+      return Direction::Left;
     default:
       return dir;
   }

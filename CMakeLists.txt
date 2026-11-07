@@ -16,6 +16,9 @@ set(SOURCES
   src/collision.cpp
   src/bullet-collision.cpp
   src/random.cpp
+  src/game-types.cpp
+  src/game-logic.cpp
+  src/stage-data.cpp
 )
 
 set(HEADERS
@@ -24,6 +27,10 @@ set(HEADERS
   include/bullet-collision.h
   include/random.h
   include/types.h
+  include/game-types.h
+  include/game-state.h
+  include/game-logic.h
+  include/stage-data.h
 )
 
 # Create library
