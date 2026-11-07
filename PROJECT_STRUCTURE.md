@@ -12,19 +12,29 @@ battle-city-cpp/
 │   ├── bullet-collision.h       # 子弹碰撞系统
 │   └── random.h                 # 随机数生成器
 │
-├── 📁 cpp/                      # C++ 源文件（实现代码）
-│   ├── geometry.cpp             # 几何计算实现
-│   ├── collision.cpp            # 碰撞检测实现
-│   ├── bullet-collision.cpp     # 子弹碰撞实现
-│   ├── random.cpp               # 随机数生成实现
-│   └── bindings.cpp             # Emscripten WASM 绑定
-│
-├── 📁 src/                      # TypeScript 源代码
-│   ├── engine/                  # 游戏引擎逻辑
-│   ├── render/                  # PixiJS 渲染
-│   ├── ui/                      # React UI 组件
-│   ├── lan/                     # 局域网联机系统
-│   └── ...
+├── 📁 src/                      # 统一的源代码目录
+│   ├── 📝 C++ 源文件（5 个）
+│   │   ├── geometry.cpp         # 几何计算实现
+│   │   ├── collision.cpp        # 碰撞检测实现
+│   │   ├── bullet-collision.cpp # 子弹碰撞实现
+│   │   ├── random.cpp           # 随机数生成实现
+│   │   └── bindings.cpp         # Emscripten WASM 绑定
+│   │
+│   ├── 📝 TypeScript 源代码
+│   │   ├── main.tsx             # React 应用入口
+│   │   ├── wasm-engine.ts       # WASM 集成层
+│   │   ├── globals.d.ts         # 全局类型定义
+│   │   ├── engine/              # 游戏引擎逻辑
+│   │   ├── render/              # PixiJS 渲染
+│   │   ├── ui/                  # React UI 组件
+│   │   ├── lan/                 # 局域网联机系统
+│   │   └── ...
+│   │
+│   └── 📝 其他
+│       ├── audio/               # 音频模块
+│       ├── input/               # 输入系统
+│       ├── stages/              # 游戏关卡
+│       └── ...
 │
 ├── 📁 test/                     # 测试文件
 │   ├── *.test.ts                # TypeScript 单元测试
@@ -65,7 +75,9 @@ battle-city-cpp/
 | `bullet-collision.h` | 子弹碰撞系统数据结构 | 133 |
 | `random.h` | 确定性随机数生成器（Mulberry32） | 62 |
 
-### `cpp/` - C++ 源文件（5 个）
+### `src/` - 统一的源代码目录
+
+#### C++ 源文件（5 个）
 存放所有 C++ 的**源文件**（`.cpp`），包含具体实现和 WASM 绑定。
 
 | 文件 | 用途 | 行数 |
@@ -76,8 +88,17 @@ battle-city-cpp/
 | `random.cpp` | 随机数生成器初始化 | 21 |
 | `bindings.cpp` | Emscripten WASM 绑定和 C 接口 | 154 |
 
-### `src/` - TypeScript 源代码
+#### TypeScript 源代码
 游戏的主要业务逻辑代码，使用 React 19 + Zustand + PixiJS 开发。
+
+主要模块：
+- `engine/` - 游戏引擎核心逻辑
+- `render/` - PixiJS 渲染系统
+- `ui/` - React 用户界面组件
+- `lan/` - 局域网联机系统
+- `audio/` - 音频播放系统
+- `input/` - 输入处理系统
+- `stages/` - 游戏关卡数据
 
 ### `test/` - 测试文件
 包括 TypeScript 单元测试（vitest）和 C++ 测试。
@@ -91,10 +112,10 @@ target_include_directories(battle-engine-core PUBLIC include)
 
 # 源文件列表
 set(SOURCES
-  cpp/geometry.cpp
-  cpp/collision.cpp
-  cpp/bullet-collision.cpp
-  cpp/random.cpp
+  src/geometry.cpp
+  src/collision.cpp
+  src/bullet-collision.cpp
+  src/random.cpp
 )
 ```
 
@@ -102,11 +123,11 @@ set(SOURCES
 ```bash
 emcc \
   -I./include \
-  ./cpp/geometry.cpp \
-  ./cpp/collision.cpp \
-  ./cpp/bullet-collision.cpp \
-  ./cpp/random.cpp \
-  ./cpp/bindings.cpp \
+  ./src/geometry.cpp \
+  ./src/collision.cpp \
+  ./src/bullet-collision.cpp \
+  ./src/random.cpp \
+  ./src/bindings.cpp \
   ...
 ```
 
@@ -116,6 +137,7 @@ emcc \
 |------|------|
 | C++ 头文件 | 5 个 |
 | C++ 源文件 | 5 个 |
+| TypeScript 模块 | 6+ 个 |
 | C++ 总代码行数 | ~1,607 行 |
 | C++ 注释行数 | ~1,167 行 |
 | 注释覆盖率 | 72.6% |
@@ -126,16 +148,25 @@ emcc \
 → 查看 `include/types.h`
 
 ### 我需要修改几何计算
-→ 查看 `include/geometry.h` 和 `cpp/geometry.cpp`
+→ 查看 `include/geometry.h` 和 `src/geometry.cpp`
 
 ### 我需要修改碰撞系统
-→ 查看 `include/collision.h` 和 `cpp/collision.cpp`
+→ 查看 `include/collision.h` 和 `src/collision.cpp`
 
 ### 我需要修改子弹物理
-→ 查看 `include/bullet-collision.h` 和 `cpp/bullet-collision.cpp`
+→ 查看 `include/bullet-collision.h` 和 `src/bullet-collision.cpp`
 
 ### 我需要修改 TypeScript 业务逻辑
 → 查看 `src/` 目录下的相应模块
+
+### 我需要修改渲染系统
+→ 查看 `src/render/`
+
+### 我需要修改 UI 界面
+→ 查看 `src/ui/`
+
+### 我需要修改游戏引擎逻辑
+→ 查看 `src/engine/`
 
 ## 🚀 编译和运行
 
@@ -174,26 +205,38 @@ cpp/
 
 ### 第 2 阶段（优化 1 - 头文件）
 ```
-include/        ← 头文件移到项目根目录
+include/
 cpp/
-└── src/
-    └── *.cpp
+└── *.cpp
+
+src/
+└── *.ts
 ```
 
-### 第 3 阶段（最终 - 源文件）
+### 第 3 阶段（优化 2 - 扁平化源文件）
 ```
-include/        ← 头文件
-cpp/            ← 源文件直接在 cpp/ 下
-├── *.cpp
-└── (无子目录)
+include/      ← 头文件
+cpp/          ← 源文件
+└── *.cpp
+
+src/          ← TypeScript
+└── *.ts
+```
+
+### 第 4 阶段（最终 - 统一源代码）
+```
+include/      ← C++ 头文件（分离）
+src/          ← 统一的源代码
+├── *.cpp     ← C++ 源文件
+└── *.ts      ← TypeScript 源文件
 ```
 
 ## 💡 设计原则
 
-1. **简洁** - 最少的目录层级，快速定位文件
-2. **标准** - 遵循业界标准 C++ 项目布局
-3. **对称** - 头文件和源文件同级（include/ 和 cpp/）
-4. **清晰** - 功能分离明确（接口 vs 实现 vs 业务逻辑）
+1. **分离接口** - 头文件独立在 `include/` 目录
+2. **统一实现** - 所有源代码（C++ 和 TypeScript）在 `src/` 目录
+3. **清晰结构** - 接口 vs 实现分离明确
+4. **便于维护** - 易于查找和修改代码
 
 ## 📝 维护指南
 
@@ -201,10 +244,10 @@ cpp/            ← 源文件直接在 cpp/ 下
 → 放在 `include/` 目录下
 
 ### 添加新的 C++ 源文件
-→ 放在 `cpp/` 目录下
+→ 放在 `src/` 目录下（与 TypeScript 文件混存）
 
 ### 添加新的 TypeScript 模块
-→ 放在 `src/` 目录下的相应分类
+→ 放在 `src/` 目录下的相应分类（或直接放在 `src/`）
 
 ### 更新编译配置
 → 修改 `CMakeLists.txt` 或 `build-wasm.sh`
@@ -219,5 +262,5 @@ cpp/            ← 源文件直接在 cpp/ 下
 ---
 
 **最后更新**: 2026-11-07  
-**版本**: 3.0（项目结构最优化版）  
+**版本**: 4.0（统一源代码版）  
 **维护人**: Copilot
