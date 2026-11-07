@@ -3,7 +3,7 @@
 # 支持 TypeScript 和 C++ WebAssembly 构建及运行
 # ============================================================================
 
-.PHONY: help install dev build run serve clean build-wasm test check-env
+.PHONY: help install dev build run serve clean build-wasm test check-env game frontend
 
 # 颜色输出
 GREEN := \033[0;32m
@@ -45,6 +45,7 @@ help:
 	@echo ""
 	@echo "$(GREEN)🚀 一键启动 (推荐):$(NC)"
 	@echo "  make                  - 启动 C++ 后端 + React 前端 ⭐"
+	@echo "  make game             - 运行游戏（启动开发服务器）⭐"
 	@echo ""
 	@echo "$(GREEN)后端命令 (C++):$(NC)"
 	@echo "  make backend          - 编译并运行 C++ 后端 (port 3000, 日志到终端)"
@@ -53,7 +54,7 @@ help:
 	@echo ""
 	@echo "$(GREEN)前端命令 (React):$(NC)"
 	@echo "  make frontend         - 运行 React 前端 (port 5173) ⭐"
-	@echo "  make dev              - 同上，启动开发服务器"
+	@echo "  make dev              - 启动开发服务器"
 	@echo "  make build            - 构建 React 生产版本"
 	@echo ""
 	@echo "$(GREEN)组合命令:$(NC)"
@@ -124,6 +125,9 @@ dev: check-env install
 
 # 运行前端界面（与 dev 相同）
 frontend: dev
+
+# 运行游戏（启动开发服务器）
+game: dev
 
 # ============================================================================
 # 后台运行
