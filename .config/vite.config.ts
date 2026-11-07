@@ -1,7 +1,7 @@
 import { defineConfig, type Plugin } from 'vitest/config'
 import react from '@vitejs/plugin-react'
-import { createLanRelay } from './bin/lan-relay.js'
-import pkg from './package.json'
+import { createLanRelay } from '../tools/bin/lan-relay.js'
+import pkg from '../package.json'
 
 /** 把 `battle-city host` 的联机中继挂到 dev server 上；HMR 的升级请求路径不同，互不干扰 */
 function lanRelay(): Plugin {
@@ -33,6 +33,6 @@ export default defineConfig({
   test: {
     globals: true,
     environment: 'jsdom',
-    include: ['test/**/*.test.ts'],
+    include: ['tests/**/*.test.ts'],
   },
 })
