@@ -17,6 +17,6 @@
     "noEmit": true,
     "types": ["vite/client", "vitest/globals"]
   },
-  "include": ["src", "test", "vite.config.ts", "engine", "render", "audio", "input", "lan", "stages", "frontend"],
+  "include": ["test", "vite.config.ts", "engine", "render", "audio", "input", "lan", "stages", "frontend", "*.ts", "*.tsx"],
   "exclude": ["node_modules", "dist"]
 }
