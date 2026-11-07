@@ -1,4 +1,4 @@
-import { BLOCK_SIZE as B } from '../../../src/engine/constants'
+import { BLOCK_SIZE as B } from '../../../engine/constants'
 import PixelText from '../pixel/PixelText'
 import Screen from '../pixel/Screen'
 import StagePreview from '../pixel/StagePreview'

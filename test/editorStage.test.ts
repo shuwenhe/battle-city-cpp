@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
-import { parseStage } from '../src/engine/map/parseStage'
-import { stages } from '../src/stages'
+import { parseStage } from '../engine/map/parseStage'
+import { stages } from '../stages'
 import {
   editorToRaw,
   emptyEditorStage,

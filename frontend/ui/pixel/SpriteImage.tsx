@@ -1,4 +1,4 @@
-import { paintToDataUrl } from '../../../src/render/canvasImage'
+import { paintToDataUrl } from '../../../render/canvasImage'
 
 const urls = new Map<string, string>()
 

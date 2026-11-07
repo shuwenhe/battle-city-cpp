@@ -1,8 +1,8 @@
 import { describe, expect, it } from 'vitest'
-import { STEP_MS } from '../src/engine/Game'
-import { resetBulletIds } from '../src/engine/entities/Bullet'
-import { resetTankIds } from '../src/engine/entities/Tank'
-import { textView } from '../src/engine/textView'
+import { STEP_MS } from '../engine/Game'
+import { resetBulletIds } from '../engine/entities/Bullet'
+import { resetTankIds } from '../engine/entities/Tank'
+import { textView } from '../engine/textView'
 import { makeStage, P1, P2, runUntilPlaying, setup } from './helpers'
 
 /** 老鹰外墙 + 上方一道砖墙 + 左右两块钢 */

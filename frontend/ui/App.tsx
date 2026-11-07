@@ -1,6 +1,6 @@
 import { useLayoutEffect } from 'react'
-import type { RawStageConfig } from '../../src/engine/types'
-import Lobby from '../../src/lan/Lobby'
+import type { RawStageConfig } from '../../engine/types'
+import Lobby from '../../lan/Lobby'
 import GameCanvas from './GameCanvas'
 import { GALLERY_TABS, replace, stagePath, useRoute, type Route } from './router'
 import ChooseStage from './screens/ChooseStage'

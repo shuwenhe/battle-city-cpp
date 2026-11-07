@@ -1,5 +1,5 @@
 import { useState, type Ref } from 'react'
-import { BLOCK_SIZE as B } from '../../../src/engine/constants'
+import { BLOCK_SIZE as B } from '../../../engine/constants'
 import PixelText, { supportsChar } from './PixelText'
 
 interface TextInputProps {

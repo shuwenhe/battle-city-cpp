@@ -1,8 +1,8 @@
 import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
-import type { RawStageConfig } from '../../src/engine/types'
-import { PLAYER1_CONTROL, PLAYER2_CONTROL, type PlayerControl } from '../../src/input/bindings'
-import { stages as builtinStages } from '../../src/stages'
+import type { RawStageConfig } from '../../engine/types'
+import { PLAYER1_CONTROL, PLAYER2_CONTROL, type PlayerControl } from '../../input/bindings'
+import { stages as builtinStages } from '../../stages'
 
 export type ControlAction = keyof PlayerControl
 

@@ -5,9 +5,9 @@ import {
   TANK_KILL_SCORE_MAP,
   TANK_LEVELS,
   ZOOM_LEVEL,
-} from '../../src/engine/constants'
-import type { StatisticsView } from '../../src/engine/StatisticsAnimation'
-import type { TankLevel } from '../../src/engine/types'
+} from '../../engine/constants'
+import type { StatisticsView } from '../../engine/StatisticsAnimation'
+import type { TankLevel } from '../../engine/types'
 import PixelText from './pixel/PixelText'
 import TankSvg from './pixel/TankSvg'
 import { useUIStore } from './store'

@@ -1,11 +1,11 @@
 import { describe, it } from 'vitest'
-import { STEP_MS } from '../src/engine/Game'
-import GameSession, { type PlayerConfig } from '../src/engine/GameSession'
-import { resetBulletIds } from '../src/engine/entities/Bullet'
-import { resetTankIds } from '../src/engine/entities/Tank'
+import { STEP_MS } from '../engine/Game'
+import GameSession, { type PlayerConfig } from '../engine/GameSession'
+import { resetBulletIds } from '../engine/entities/Bullet'
+import { resetTankIds } from '../engine/entities/Tank'
 import { seededRandom } from './random'
-import InputManager from '../src/input/InputManager'
-import { stages } from '../src/stages'
+import InputManager from '../input/InputManager'
+import { stages } from '../stages'
 import { P1, P2 } from './helpers'
 
 /** 单局最长 10 分钟逻辑时间，超时按平局记 */

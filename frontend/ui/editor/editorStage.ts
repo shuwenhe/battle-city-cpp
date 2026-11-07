@@ -1,6 +1,6 @@
-import { BLOCK_SIZE, FIELD_BLOCK_SIZE, N_MAP } from '../../../src/engine/constants'
-import { parseStage } from '../../../src/engine/map/parseStage'
-import type { BotGroupConfig, MapItemType, RawStageConfig } from '../../../src/engine/types'
+import { BLOCK_SIZE, FIELD_BLOCK_SIZE, N_MAP } from '../../../engine/constants'
+import { parseStage } from '../../../engine/map/parseStage'
+import type { BotGroupConfig, MapItemType, RawStageConfig } from '../../../engine/types'
 
 /** 编辑器里的一个 block；hex 仅对砖 / 钢有效，每一位对应一个象限（1 左上 2 右上 4 左下 8 右下） */
 export interface MapItem {

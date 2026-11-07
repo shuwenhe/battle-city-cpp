@@ -1,25 +1,25 @@
 import { createHash } from 'node:crypto'
 import { describe, expect, it } from 'vitest'
-import type { AIContext } from '../src/engine/ai/controller'
-import { defenseRoutes } from '../src/engine/ai/defense'
-import { brickInFront } from '../src/engine/ai/lane'
-import { eagleReachSteps, eagleReachTime } from '../src/engine/ai/eagle-threat'
+import type { AIContext } from '../engine/ai/controller'
+import { defenseRoutes } from '../engine/ai/defense'
+import { brickInFront } from '../engine/ai/lane'
+import { eagleReachSteps, eagleReachTime } from '../engine/ai/eagle-threat'
 import {
   avoidAim,
   exposureCosts,
   holdBeforeAim,
   stepsIntoBullet,
-} from '../src/engine/ai/self-defense'
-import { buildSpots, getTankSpot, spotToTankPos } from '../src/engine/ai/spots'
-import TeammateBrain from '../src/engine/ai/teammate-brain'
-import { STEP_MS } from '../src/engine/Game'
-import Bullet from '../src/engine/entities/Bullet'
-import PowerUp from '../src/engine/entities/PowerUp'
-import Tank from '../src/engine/entities/Tank'
-import TerrainMap from '../src/engine/map/TerrainMap'
+} from '../engine/ai/self-defense'
+import { buildSpots, getTankSpot, spotToTankPos } from '../engine/ai/spots'
+import TeammateBrain from '../engine/ai/teammate-brain'
+import { STEP_MS } from '../engine/Game'
+import Bullet from '../engine/entities/Bullet'
+import PowerUp from '../engine/entities/PowerUp'
+import Tank from '../engine/entities/Tank'
+import TerrainMap from '../engine/map/TerrainMap'
 import { seededRandom } from './random'
-import { stages } from '../src/stages'
-import type { Direction, RawStageConfig } from '../src/engine/types'
+import { stages } from '../stages'
+import type { Direction, RawStageConfig } from '../engine/types'
 import { makeStage, P1, P2, runUntilPlaying, setup } from './helpers'
 
 /** 空地图（老鹰在第 12 行第 6 列），overrides 以 "row,col" 指定地形 */

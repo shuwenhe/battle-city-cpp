@@ -1,5 +1,5 @@
 import { createRoot } from 'react-dom/client'
-import audio from './audio/AudioManager'
+import audio from '../audio/AudioManager'
 import App from '../frontend/ui/App'
 
 const container = document.getElementById('root')

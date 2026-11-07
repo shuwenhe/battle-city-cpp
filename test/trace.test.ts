@@ -1,14 +1,14 @@
 import { createHash } from 'node:crypto'
 import { describe, expect, it } from 'vitest'
-import { STEP_MS } from '../src/engine/Game'
-import GameSession, { type PlayerConfig } from '../src/engine/GameSession'
-import { PLAYER_SPAWN_POS } from '../src/engine/constants'
-import { resetBulletIds } from '../src/engine/entities/Bullet'
-import { resetTankIds } from '../src/engine/entities/Tank'
+import { STEP_MS } from '../engine/Game'
+import GameSession, { type PlayerConfig } from '../engine/GameSession'
+import { PLAYER_SPAWN_POS } from '../engine/constants'
+import { resetBulletIds } from '../engine/entities/Bullet'
+import { resetTankIds } from '../engine/entities/Tank'
 import { seededRandom } from './random'
-import InputManager from '../src/input/InputManager'
-import { PLAYER1_CONTROL, PLAYER2_CONTROL } from '../src/input/bindings'
-import { getStageByName } from '../src/stages'
+import InputManager from '../input/InputManager'
+import { PLAYER1_CONTROL, PLAYER2_CONTROL } from '../input/bindings'
+import { getStageByName } from '../stages'
 
 const P1: PlayerConfig = {
   control: PLAYER1_CONTROL,
