@@ -1,6 +1,6 @@
-import { FIELD_SIZE } from '../../../src/engine/constants'
-import type { RawStageConfig } from '../../../src/engine/types'
-import { renderStagePreview } from '../../../src/render/stagePreview'
+import { FIELD_SIZE } from '../../../engine/constants'
+import type { RawStageConfig } from '../../../engine/types'
+import { renderStagePreview } from '../../../render/stagePreview'
 
 interface Props {
   stage: RawStageConfig | null

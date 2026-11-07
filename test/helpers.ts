@@ -1,10 +1,10 @@
-import { STEP_MS } from '../src/engine/Game'
-import GameSession, { type PlayerConfig } from '../src/engine/GameSession'
-import { PLAYER_SPAWN_POS } from '../src/engine/constants'
+import { STEP_MS } from '../engine/Game'
+import GameSession, { type PlayerConfig } from '../engine/GameSession'
+import { PLAYER_SPAWN_POS } from '../engine/constants'
 import { seededRandom } from './random'
-import InputManager from '../src/input/InputManager'
-import { PLAYER1_CONTROL, PLAYER2_CONTROL } from '../src/input/bindings'
-import type { RawStageConfig, SoundName } from '../src/engine/types'
+import InputManager from '../input/InputManager'
+import { PLAYER1_CONTROL, PLAYER2_CONTROL } from '../input/bindings'
+import type { RawStageConfig, SoundName } from '../engine/types'
 
 /** overrides 以 "row,col" 指定地形编码，其余为空地，(12, 6) 为老鹰 */
 export function makeStage(

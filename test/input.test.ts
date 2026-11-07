@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
-import InputManager from '../src/input/InputManager'
-import { PLAYER1_CONTROL, PLAYER2_CONTROL } from '../src/input/bindings'
+import InputManager from '../input/InputManager'
+import { PLAYER1_CONTROL, PLAYER2_CONTROL } from '../input/bindings'
 
 const key = (type: 'keydown' | 'keyup', code: string) =>
   document.dispatchEvent(new KeyboardEvent(type, { code }))

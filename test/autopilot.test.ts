@@ -1,10 +1,10 @@
 import { afterEach, describe, expect, it } from 'vitest'
-import { STEP_MS } from '../src/engine/Game'
-import type GameSession from '../src/engine/GameSession'
-import type { PlayerConfig } from '../src/engine/GameSession'
-import type InputManager from '../src/input/InputManager'
-import { PLAYER1_CONTROL, PLAYER2_CONTROL } from '../src/input/bindings'
-import type { RawStageConfig } from '../src/engine/types'
+import { STEP_MS } from '../engine/Game'
+import type GameSession from '../engine/GameSession'
+import type { PlayerConfig } from '../engine/GameSession'
+import type InputManager from '../input/InputManager'
+import { PLAYER1_CONTROL, PLAYER2_CONTROL } from '../input/bindings'
+import type { RawStageConfig } from '../engine/types'
 import { killAllBots, makeStage, P1, P2, runUntilPlaying, setup } from './helpers'
 
 const CONTROLS = [PLAYER1_CONTROL, PLAYER2_CONTROL]

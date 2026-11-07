@@ -1,10 +1,10 @@
 import { beforeEach, describe, expect, it } from 'vitest'
-import { STEP_MS } from '../src/engine/Game'
-import GameSession from '../src/engine/GameSession'
-import { PLAYER_SPAWN_POS } from '../src/engine/constants'
+import { STEP_MS } from '../engine/Game'
+import GameSession from '../engine/GameSession'
+import { PLAYER_SPAWN_POS } from '../engine/constants'
 import { seededRandom } from './random'
-import { directionCodes, PLAYER1_CONTROL } from '../src/input/bindings'
-import { guestMirror, handleMessage, lanSocketUrl, useLanStore } from '../src/lan/client'
+import { directionCodes, PLAYER1_CONTROL } from '../input/bindings'
+import { guestMirror, handleMessage, lanSocketUrl, useLanStore } from '../lan/client'
 import {
   FrameMirror,
   packBits,
@@ -12,16 +12,16 @@ import {
   unpackBits,
   type FrameMessage,
   type SceneFrame,
-} from '../src/lan/frame'
+} from '../lan/frame'
 import {
   decodeInput,
   encodeInput,
   HostInput,
   REMOTE_CONTROL,
   type InputSample,
-} from '../src/lan/input'
-import { nextPausedBy } from '../src/lan/pause'
-import { stages } from '../src/stages'
+} from '../lan/input'
+import { nextPausedBy } from '../lan/pause'
+import { stages } from '../stages'
 import { useUIStore } from '../frontend/ui/store'
 import { makeStage } from './helpers'
 

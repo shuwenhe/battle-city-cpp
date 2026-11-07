@@ -3,7 +3,7 @@ import {
   FIELD_BLOCK_SIZE as FBZ,
   SCREEN_HEIGHT,
   SCREEN_WIDTH,
-} from '../../../src/engine/constants'
+} from '../../../engine/constants'
 
 const LINES = Array.from({ length: FBZ }, (_, i) => i + 1)
 
