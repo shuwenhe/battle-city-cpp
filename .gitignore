@@ -1,0 +1,75 @@
+# 依赖管理
+node_modules/
+pnpm-lock.yaml
+package-lock.json
+yarn.lock
+
+# 构建输出
+dist/
+build/
+*.wasm
+*.wasm.js
+*.wasm.map
+*.wasm.wat
+
+# IDE 编辑器
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+*.code-workspace
+
+# IDE 特定文件
+.eslintcache
+.eslintignore
+.prettierrc
+
+# 编译和调试
+CMakeFiles/
+cmake_install.cmake
+Makefile
+*.o
+*.a
+*.so
+*.dylib
+.cmake
+
+# C++ 构建
+build-wasm/
+cmake-build-*/
+*.out
+
+# 开发工具
+staging/
+.env
+.env.local
+*.log
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+
+# Node 运行时
+.npm/
+.node-gyp/
+
+# Emscripten 缓存
+.emscripten_cache/
+*.js.mem
+
+# 临时测试文件
+*.tmp
+
+# VS Code Copilot
+.copilot/
+
+# Git
+.git/
+
+# 本地开发
+.local/
+.cache/
