@@ -117,11 +117,7 @@ install:
 dev: check-env install
 	@echo "$(BLUE)🚀 启动开发服务器 (http://localhost:$(PORT))$(NC)"
 	@echo ""
-	@if command -v pnpm > /dev/null; then \
-		pnpm dev; \
-	else \
-		pnpm dev; \
-	fi
+	@npm run dev
 
 # 运行前端界面（与 dev 相同）
 frontend: dev
@@ -141,19 +137,11 @@ run: check-env install
 	@echo "✅ 清理旧进程"
 	@echo ""
 	@echo "$(YELLOW)2️⃣ 编译项目...$(NC)"
-	@if command -v pnpm > /dev/null; then \
-		pnpm build 2>&1 | head -20; \
-	else \
-		pnpm build 2>&1 | head -20; \
-	fi
+	@npm run build 2>&1 | head -20
 	@echo "✅ 构建完成"
 	@echo ""
 	@echo "$(YELLOW)3️⃣ 启动开发服务器...$(NC)"
-	@if command -v pnpm > /dev/null; then \
-		nohup pnpm dev > /tmp/battle-city.log 2>&1 & \
-	else \
-		nohup pnpm dev > /tmp/battle-city.log 2>&1 & \
-	fi
+	@nohup npm run dev > /tmp/battle-city.log 2>&1 &
 	@sleep 2
 	@echo "✅ 游戏已启动在后台"
 	@echo ""
@@ -166,11 +154,7 @@ run: check-env install
 serve: check-env install
 	@echo "$(BLUE)🌐 启动 Web 服务器（后台）$(NC)"
 	@-pkill -f "node.*vite" 2>/dev/null || true
-	@if command -v pnpm > /dev/null; then \
-		nohup pnpm dev > /tmp/battle-city.log 2>&1 & \
-	else \
-		nohup pnpm dev > /tmp/battle-city.log 2>&1 & \
-	fi
+	@nohup npm run dev > /tmp/battle-city.log 2>&1 &
 	@sleep 2
 	@echo "$(GREEN)✅ 服务已启动$(NC)"
 	@echo "访问: http://localhost:$(PORT)"
@@ -233,11 +217,7 @@ run-backend-daemon: backend
 run-all: run-backend-daemon
 	@echo ""
 	@echo "$(BLUE)🎮 启动 React 前端$(NC)"
-	@if command -v pnpm > /dev/null; then \
-		pnpm dev; \
-	else \
-		pnpm dev; \
-	fi
+	@npm run dev
 
 # 查看后端日志
 logs-backend:
@@ -276,11 +256,7 @@ status:
 build: check-env install
 	@echo "$(BLUE)🔨 构建生产版本$(NC)"
 	@echo ""
-	@if command -v pnpm > /dev/null; then \
-		pnpm build; \
-	else \
-		pnpm build; \
-	fi
+	@npm run build
 	@echo ""
 	@echo "$(GREEN)✅ 构建完成 - 输出在 dist/ 目录$(NC)"
 	@echo ""
@@ -313,21 +289,13 @@ build-wasm: check-env
 test: check-env install
 	@echo "$(BLUE)🧪 运行单元测试$(NC)"
 	@echo ""
-	@if command -v pnpm > /dev/null; then \
-		pnpm test; \
-	else \
-		pnpm test; \
-	fi
+	@npm test
 	@echo ""
 
 check: check-env install
 	@echo "$(BLUE)✓ TypeScript 类型检查$(NC)"
 	@echo ""
-	@if command -v pnpm > /dev/null; then \
-		./node_modules/.bin/tsc --noEmit; \
-	else \
-		npx tsc --noEmit; \
-	fi
+	@npm run check || ./node_modules/.bin/tsc --noEmit
 	@echo ""
 	@echo "$(GREEN)✅ 类型检查完成$(NC)"
 	@echo ""
