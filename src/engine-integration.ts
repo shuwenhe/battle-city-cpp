@@ -19,6 +19,7 @@ export async function initCppEngine() {
 
   try {
     // 仅在 Node.js 环境中加载
+    // @ts-ignore Optional C++ bindings
     const bindings = await import('./cpp-bindings.js');
     cppEngine = bindings;
     cppAvailable = true;

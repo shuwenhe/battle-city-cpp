@@ -6,7 +6,7 @@ import {
   emptyEditorStage,
   rawToEditor,
   type MapItem,
-} from '../src/ui/editor/editorStage'
+} from '../frontend/ui/editor/editorStage'
 
 describe('editorStage', () => {
   it('内置关卡经编辑器往返后地形与敌人不变', () => {

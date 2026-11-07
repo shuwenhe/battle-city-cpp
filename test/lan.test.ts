@@ -2,7 +2,7 @@ import { beforeEach, describe, expect, it } from 'vitest'
 import { STEP_MS } from '../src/engine/Game'
 import GameSession from '../src/engine/GameSession'
 import { PLAYER_SPAWN_POS } from '../src/engine/constants'
-import { seededRandom } from '../src/engine/random'
+import { seededRandom } from './random'
 import { directionCodes, PLAYER1_CONTROL } from '../src/input/bindings'
 import { guestMirror, handleMessage, lanSocketUrl, useLanStore } from '../src/lan/client'
 import {
@@ -22,7 +22,7 @@ import {
 } from '../src/lan/input'
 import { nextPausedBy } from '../src/lan/pause'
 import { stages } from '../src/stages'
-import { useUIStore } from '../src/ui/store'
+import { useUIStore } from '../frontend/ui/store'
 import { makeStage } from './helpers'
 
 describe('输入编码', () => {

@@ -5,7 +5,7 @@ import { buildSpots } from '../src/engine/ai/spots'
 import { STEP_MS } from '../src/engine/Game'
 import Tank from '../src/engine/entities/Tank'
 import TerrainMap from '../src/engine/map/TerrainMap'
-import { seededRandom } from '../src/engine/random'
+import { seededRandom } from './random'
 import { makeStage, runUntilPlaying, setup } from './helpers'
 
 describe('BotBrain 打砖', () => {

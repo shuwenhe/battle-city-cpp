@@ -97,6 +97,8 @@ let wasmModule: WasmModule | null = null      // 缓存已加载的WASM模块
 export async function loadWasmEngine(): Promise<WasmModule> {  // 定义WASM加载函数
   if (wasmModule) {                 // 如果模块已缓存
     return wasmModule               // 直接返回缓存的模块
+  }
+  // @ts-ignore WASM module loading
   return Module                    // 返回WASM模块
 }
 
@@ -219,23 +221,23 @@ export async function randomNextInt(min: number, max: number): Promise<number> {
 export const SyncEngine = {        // 定义同步引擎对象
   testRectCollide(a: Rect, b: Rect): boolean {  // 同步矩形碰撞测试
     if (!wasmModule) throw new Error('WASM module not loaded')  // 检查模块是否加载
-    return wasmModule._geom_test_rect_collide(a.x, a.y, a.w, a.h, b.x, b.y, b.w, b.h)  // 直接调用C++函数
+    return (wasmModule as WasmModule)._geom_test_rect_collide(a.x, a.y, a.w, a.h, b.x, b.y, b.w, b.h)  // 直接调用C++函数
   },
   
   distance(a: Point, b: Point): number {  // 同步距离计算
     if (!wasmModule) throw new Error('WASM module not loaded')  // 检查模块是否加载
-    return wasmModule._geom_distance(a.x, a.y, b.x, b.y)  // 直接调用C++函数
+    return (wasmModule as WasmModule)._geom_distance(a.x, a.y, b.x, b.y)  // 直接调用C++函数
   },
   
   distanceSq(a: Point, b: Point): number {  // 同步距离平方计算
     if (!wasmModule) throw new Error('WASM module not loaded')  // 检查模块是否加载
-    return wasmModule._geom_distance_sq(a.x, a.y, b.x, b.y)  // 直接调用C++函数
+    return (wasmModule as WasmModule)._geom_distance_sq(a.x, a.y, b.x, b.y)  // 直接调用C++函数
   },
   
   calculateBulletHitTime(b1: Bullet, b2: Bullet): number {  // 同步子弹碰撞时间计算
     if (!wasmModule) throw new Error('WASM module not loaded')  // 检查模块是否加载
     const dirMap = { up: 0, down: 1, left: 2, right: 3 }  // 创建方向映射
-    return wasmModule._bullet_calculate_hit_time(  // 直接调用C++函数
+    return (wasmModule as WasmModule)._bullet_calculate_hit_time(  // 直接调用C++函数
       b1.x, b1.y, b1.last_x, b1.last_y, dirMap[b1.direction], b1.speed,  // 子弹1参数
       b2.x, b2.y, b2.last_x, b2.last_y, dirMap[b2.direction], b2.speed   // 子弹2参数
     )
@@ -243,7 +245,6 @@ export const SyncEngine = {        // 定义同步引擎对象
   
   randomNext(): number {            // 同步随机数生成
     if (!wasmModule) throw new Error('WASM module not loaded')  // 检查模块是否加载
-    return wasmModule._random_next()  // 直接调用C++函数
+    return (wasmModule as WasmModule)._random_next()  // 直接调用C++函数
   },
-}
 }

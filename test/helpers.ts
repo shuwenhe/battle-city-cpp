@@ -1,7 +1,7 @@
 import { STEP_MS } from '../src/engine/Game'
 import GameSession, { type PlayerConfig } from '../src/engine/GameSession'
 import { PLAYER_SPAWN_POS } from '../src/engine/constants'
-import { seededRandom } from '../src/engine/random'
+import { seededRandom } from './random'
 import InputManager from '../src/input/InputManager'
 import { PLAYER1_CONTROL, PLAYER2_CONTROL } from '../src/input/bindings'
 import type { RawStageConfig, SoundName } from '../src/engine/types'
