@@ -1,3 +1,4 @@
+import React from 'react'
 import type { CSSProperties, ReactElement } from 'react'
 
 // 8×8 像素位图字体，

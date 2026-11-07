@@ -1,3 +1,4 @@
+import React from 'react'
 import { useLayoutEffect } from 'react'
 import type { RawStageConfig } from '../core/engine/types'
 import Lobby from '../core/lan/Lobby'

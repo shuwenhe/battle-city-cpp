@@ -1,3 +1,4 @@
+import React from 'react'
 import './pixel.css'
 
 interface AreaButtonProps {

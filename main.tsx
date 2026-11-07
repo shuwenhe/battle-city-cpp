@@ -1,4 +1,6 @@
+import React from 'react'
 import { createRoot } from 'react-dom/client'
+import { jsx as _jsx } from 'react/jsx-runtime'
 import audio from './core/audio/AudioManager'
 import App from './frontend/App'
 

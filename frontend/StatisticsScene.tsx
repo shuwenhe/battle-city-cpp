@@ -1,3 +1,4 @@
+import React from 'react'
 import {
   BLOCK_SIZE as B,
   SCREEN_HEIGHT,

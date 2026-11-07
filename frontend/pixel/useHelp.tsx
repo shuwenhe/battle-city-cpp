@@ -1,5 +1,6 @@
+import React from 'react'
 import { useEffect, useRef, useState, type ReactNode } from 'react'
-import { BLOCK_SIZE as B } from '../../../core/engine/constants'
+import { BLOCK_SIZE as B } from '../../core/engine/constants'
 import { OverlayFrame, useOverlayKeys } from './Overlay'
 import PixelText, { textWidth } from './PixelText'
 import TextButton from './TextButton'

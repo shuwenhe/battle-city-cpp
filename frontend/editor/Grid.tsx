@@ -1,9 +1,10 @@
+import React from 'react'
 import {
   BLOCK_SIZE as B,
   FIELD_BLOCK_SIZE as FBZ,
   SCREEN_HEIGHT,
   SCREEN_WIDTH,
-} from '../../../core/engine/constants'
+} from '../../core/engine/constants'
 
 const LINES = Array.from({ length: FBZ }, (_, i) => i + 1)
 

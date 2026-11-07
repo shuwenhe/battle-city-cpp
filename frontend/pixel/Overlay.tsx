@@ -1,5 +1,6 @@
+import React from 'react'
 import { useEffect, useRef, type ReactNode } from 'react'
-import { SCREEN_HEIGHT, SCREEN_WIDTH } from '../../../core/engine/constants'
+import { SCREEN_HEIGHT, SCREEN_WIDTH } from '../../core/engine/constants'
 import { menuKeyOf } from '../menuKeys'
 import { useUIStore } from '../store'
 import PixelText, { textWidth } from './PixelText'

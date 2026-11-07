@@ -1,3 +1,4 @@
+import React from 'react'
 import { useEffect, useRef, useState } from 'react'
 import { BLOCK_SIZE as B, FIELD_SIZE } from '../engine/constants'
 import type { RawStageConfig } from '../engine/types'

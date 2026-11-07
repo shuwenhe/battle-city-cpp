@@ -1,5 +1,6 @@
+import React from 'react'
 import { useRef, useState, type ReactNode } from 'react'
-import { BLOCK_SIZE as B, SCREEN_HEIGHT, SCREEN_WIDTH } from '../../../core/engine/constants'
+import { BLOCK_SIZE as B, SCREEN_HEIGHT, SCREEN_WIDTH } from '../../core/engine/constants'
 import { WrappedText } from './PixelText'
 import { useMenuKeys } from '../menuKeys'
 import TextButton from './TextButton'

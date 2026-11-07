@@ -1,3 +1,4 @@
+import React from 'react'
 import { useEffect, useRef, useState, type RefObject } from 'react'
 import { Application } from 'pixi.js'
 import audio from '../audio/AudioManager'

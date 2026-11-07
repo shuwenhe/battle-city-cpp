@@ -40,7 +40,7 @@ function injectGlobals(): Plugin {
 // 开发服务器沿用旧版 GitHub Pages 的 /battle-city/ 子路径；打包都用 --base ./，放在哪个路径下都能打开
 export default defineConfig({
   base: process.env.NODE_ENV === 'production' ? '/battle-city/' : '/',
-  plugins: [react({ jsxRuntime: 'automatic' }), injectGlobals(), lanRelay()],
+  plugins: [react(), injectGlobals(), lanRelay()],
   // 帮助面板里显示的版本号与编译时间（旧版 COMPILE_VERSION / COMPILE_DATE）
   define: {
     __APP_VERSION__: JSON.stringify(pkg.version),

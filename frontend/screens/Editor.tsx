@@ -1,12 +1,13 @@
+import React from 'react'
 import { useEffect, useMemo, useRef, useState, type MouseEvent } from 'react'
 import {
   BLOCK_SIZE as B,
   FIELD_BLOCK_SIZE as FBZ,
   TANK_LEVELS,
   ZOOM_LEVEL,
-} from '../../../core/engine/constants'
-import type { MapItemType, TankLevel } from '../../../core/engine/types'
-import { stages as builtinStages } from '../../../core/stages'
+} from '../../core/engine/constants'
+import type { MapItemType, TankLevel } from '../../core/engine/types'
+import { stages as builtinStages } from '../../core/stages'
 import {
   EMPTY_ITEM,
   editorToRaw,

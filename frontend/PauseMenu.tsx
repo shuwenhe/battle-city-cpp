@@ -1,3 +1,4 @@
+import React from 'react'
 import { useState } from 'react'
 import type { PlayerControl } from '../core/input/bindings'
 import { directionLabel, keyLabel } from './keyLabels'
