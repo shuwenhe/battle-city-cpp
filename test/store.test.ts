@@ -1,5 +1,5 @@
 import { beforeEach, describe, expect, it } from 'vitest'
-import { DEFAULT_HI_SCORE, useUIStore, type GameResult } from '../src/ui/store'
+import { DEFAULT_HI_SCORE, useUIStore, type GameResult } from '../frontend/ui/store'
 
 const result = (patch: Partial<GameResult>): GameResult => ({
   stageName: '1',
