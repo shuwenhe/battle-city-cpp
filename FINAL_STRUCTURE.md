@@ -7,13 +7,13 @@
 ### 阶段 1：分层重组（已完成）
 - 从 15+ 个根级目录 → 8 个主类别
 - 配置集中到 `.config/`
-- 应用分离到 `apps/`
+- 应用分离到 `app/`
 - 核心逻辑独立到 `core/`
 - 工具和脚本到 `tools/`
 
 ### 阶段 2：前端扁平化（已完成）
-- 删除 `apps/frontend/ui/` 冗余层
-- 所有前端组件直接在 `apps/frontend/` 下
+- 删除 `app/frontend/ui/` 冗余层
+- 所有前端组件直接在 `app/frontend/` 下
 - 简化导入路径和项目结构
 
 ## 最终目录树
@@ -27,7 +27,7 @@ battle-city-cpp/
 │   ├── Makefile               # 项目命令
 │   └── pnpm-workspace.yaml    # 工作区配置
 │
-├── apps/                       # 应用层（独立可部署的模块）
+├── app/                       # 应用层（独立可部署的模块）
 │   ├── frontend/              # Web 前端 (React 19 + PixiJS v8)
 │   │   ├── App.tsx            # React 主组件
 │   │   ├── store.ts           # zustand 全局状态
@@ -117,7 +117,7 @@ battle-city-cpp/
 
 ## 导入路径速查表
 
-### 从 apps/frontend 导入 core 模块
+### 从 app/frontend 导入 core 模块
 ```typescript
 // 顶级 React 组件
 import { Game } from '../../core/engine/Game'
@@ -129,13 +129,13 @@ import { Game } from '../../../core/engine/Game'
 ### 从 tests 导入
 ```typescript
 import { Game } from '../../core/engine/Game'
-import { useUIStore } from '../../apps/frontend/store'
+import { useUIStore } from '../../app/frontend/store'
 ```
 
 ### 从 core/lan 导入前端
 ```typescript
-import { useUIStore } from '../../apps/frontend/store'
-import BattleOverlay from '../../apps/frontend/BattleOverlay'
+import { useUIStore } from '../../app/frontend/store'
+import BattleOverlay from '../../app/frontend/BattleOverlay'
 ```
 
 ## 性能指标
@@ -150,9 +150,9 @@ import BattleOverlay from '../../apps/frontend/BattleOverlay'
 ## 关键改进点
 
 ### 结构优化
-- **减少嵌套**：3 层目录变 2 层（apps/frontend/ 替代 apps/frontend/ui/）
+- **减少嵌套**：3 层目录变 2 层（app/frontend/ 替代 app/frontend/ui/）
 - **清晰分离**：config/app/core 清晰的关注点分离
-- **易于扩展**：新增应用只需在 apps/ 下创建目录
+- **易于扩展**：新增应用只需在 app/ 下创建目录
 
 ### 可维护性
 - **集中配置**：.config/ 统一管理所有构建配置

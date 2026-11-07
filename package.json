@@ -66,7 +66,7 @@
   },
   "files": [
     "tools/bin",
-    "apps/frontend",
+    "app/frontend",
     "core",
     "index.html",
     ".config/vite.config.ts",

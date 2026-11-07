@@ -17,6 +17,6 @@
     "noEmit": true,
     "types": ["vite/client", "vitest/globals"]
   },
-  "include": ["../tests", "../core/**/*.ts", "../apps/**/*.ts", "../apps/**/*.tsx", "../*.ts", "../*.tsx"],
+  "include": ["../tests", "../core/**/*.ts", "../app/**/*.ts", "../app/**/*.tsx", "../*.ts", "../*.tsx"],
   "exclude": ["../node_modules", "../dist"]
 }

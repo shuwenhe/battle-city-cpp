@@ -5,7 +5,7 @@
 ```
 battle-city-cpp/
 ├── .config/           # 所有配置文件
-├── apps/              # 应用
+├── app/              # 应用
 │   ├── frontend/      # Web 前端 (React + PixiJS)
 │   └── server/        # C++ 后端
 ├── core/              # 核心游戏逻辑
@@ -67,7 +67,7 @@ npm test:watch        # 在另一个终端持续运行测试
 
 ## 项目架构
 
-### apps/frontend
+### app/frontend
 React + PixiJS 前端应用
 - `ui/` - React 组件（屏幕、菜单、编辑器）
 - `ui/store.ts` - 全局状态 (zustand)
@@ -82,7 +82,7 @@ React + PixiJS 前端应用
 - `lan/` - 局域网联机逻辑
 - `stages/` - 关卡配置
 
-### apps/server
+### app/server
 C++ 后端（可选的联机主机）
 - CMakeLists.txt 在 `.config/CMakeLists.txt`
 - 源代码结构配置在 `CMakeLists.txt`
@@ -114,7 +114,7 @@ vitest 测试套件
 从不同目录引入时的相对路径：
 
 ```typescript
-// 从 apps/frontend 引入 core 模块
+// 从 app/frontend 引入 core 模块
 import { Game } from '../../../../core/engine/Game'
 
 // 从 tests 引入 core 模块
