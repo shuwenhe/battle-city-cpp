@@ -68,6 +68,8 @@
     "trailingComma": "all"
   },
   "dependencies": {
+    "ffi-napi": "^4.0.3",
+    "ref-napi": "^3.0.3",
     "ws": "^8.21.0"
   }
 }
