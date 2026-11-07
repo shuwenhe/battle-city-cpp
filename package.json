@@ -19,16 +19,8 @@
   ],
   "type": "module",
   "bin": {
-    "battle-city": "bin/battle-city.js"
+    "battle-city": "tools/bin/battle-city.js"
   },
-  "files": [
-    "bin",
-    "www",
-    "src",
-    "index.html",
-    "vite.config.ts",
-    "tsconfig.json"
-  ],
   "engines": {
     "node": ">=18"
   },
@@ -72,4 +64,15 @@
     "ref-napi": "^3.0.3",
     "ws": "^8.21.0"
   }
+  "files": [
+    "tools/bin",
+    "apps/frontend",
+    "core",
+    "index.html",
+    ".config/vite.config.ts",
+    ".config/tsconfig.json",
+    "main.tsx",
+    "globals.d.ts",
+    "cpp-bindings.js"
+  ],
 }

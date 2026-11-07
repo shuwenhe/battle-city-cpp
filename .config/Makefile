@@ -35,7 +35,7 @@ start:
 	@echo ""
 	@echo "$(GREEN)启动 C++ 后端 + React 前端...$(NC)"
 	@echo ""
-	@bash ./start-dev.sh
+	@bash ./tools/scripts/start-dev.sh
 
 # 帮助命令
 help:
@@ -119,7 +119,7 @@ dev: check-env install
 	@if command -v pnpm > /dev/null; then \
 		pnpm dev; \
 	else \
-		npm run dev; \
+		pnpm dev; \
 	fi
 
 # 运行前端界面（与 dev 相同）
@@ -140,7 +140,7 @@ run: check-env install
 	@if command -v pnpm > /dev/null; then \
 		pnpm build 2>&1 | head -20; \
 	else \
-		npm run build 2>&1 | head -20; \
+		pnpm build 2>&1 | head -20; \
 	fi
 	@echo "✅ 构建完成"
 	@echo ""
@@ -148,7 +148,7 @@ run: check-env install
 	@if command -v pnpm > /dev/null; then \
 		nohup pnpm dev > /tmp/battle-city.log 2>&1 & \
 	else \
-		nohup npm run dev > /tmp/battle-city.log 2>&1 & \
+		nohup pnpm dev > /tmp/battle-city.log 2>&1 & \
 	fi
 	@sleep 2
 	@echo "✅ 游戏已启动在后台"
@@ -165,7 +165,7 @@ serve: check-env install
 	@if command -v pnpm > /dev/null; then \
 		nohup pnpm dev > /tmp/battle-city.log 2>&1 & \
 	else \
-		nohup npm run dev > /tmp/battle-city.log 2>&1 & \
+		nohup pnpm dev > /tmp/battle-city.log 2>&1 & \
 	fi
 	@sleep 2
 	@echo "$(GREEN)✅ 服务已启动$(NC)"
@@ -193,7 +193,7 @@ backend: check-env
 	@echo "$(BLUE)🚀 启动 C++ 后端服务器 (监听 :3000)$(NC)"
 	@echo "$(YELLOW)按 Ctrl+C 停止服务器$(NC)"
 	@echo ""
-	@./backend/bin/battle-city-server
+	@./apps/server/bin/battle-city-server
 
 # 调试编译 C++
 cpp-debug: check-env
@@ -206,20 +206,20 @@ cpp-debug: check-env
 
 # 运行 C++ 后端服务器（仅运行，不编译）
 run-backend: 
-	@if [ ! -f "./backend/bin/battle-city-server" ]; then \
+	@if [ ! -f "./apps/server/bin/battle-city-server" ]; then \
 		echo "$(RED)❌ 后端未编译，请先运行 make backend$(NC)"; \
 		exit 1; \
 	fi
 	@echo "$(BLUE)🚀 启动 C++ 后端服务器$(NC)"
 	@echo "$(YELLOW)按 Ctrl+C 停止服务器$(NC)"
 	@echo ""
-	@./backend/bin/battle-city-server
+	@./apps/server/bin/battle-city-server
 
 # 后台运行 C++ 后端
 run-backend-daemon: backend
 	@echo "$(BLUE)🚀 在后台启动 C++ 后端服务器$(NC)"
 	@echo ""
-	@nohup ./backend/bin/battle-city-server > /tmp/battle-city-server.log 2>&1 &
+	@nohup ./apps/server/bin/battle-city-server > /tmp/battle-city-server.log 2>&1 &
 	@sleep 1
 	@echo "$(GREEN)✅ 后端已启动 (PID: $$(pgrep -f battle-city-server))$(NC)"
 	@echo "监听: http://localhost:3000"
@@ -232,7 +232,7 @@ run-all: run-backend-daemon
 	@if command -v pnpm > /dev/null; then \
 		pnpm dev; \
 	else \
-		npm run dev; \
+		pnpm dev; \
 	fi
 
 # 查看后端日志
@@ -275,7 +275,7 @@ build: check-env install
 	@if command -v pnpm > /dev/null; then \
 		pnpm build; \
 	else \
-		npm run build; \
+		pnpm build; \
 	fi
 	@echo ""
 	@echo "$(GREEN)✅ 构建完成 - 输出在 dist/ 目录$(NC)"
@@ -312,7 +312,7 @@ test: check-env install
 	@if command -v pnpm > /dev/null; then \
 		pnpm test; \
 	else \
-		npm run test; \
+		pnpm test; \
 	fi
 	@echo ""
 
@@ -366,7 +366,7 @@ format:
 	@if command -v pnpm > /dev/null; then \
 		pnpm format 2>/dev/null || echo "未配置格式化工具"; \
 	else \
-		npm run format 2>/dev/null || echo "未配置格式化工具"; \
+		pnpm format 2>/dev/null || echo "未配置格式化工具"; \
 	fi
 
 # 项目信息
