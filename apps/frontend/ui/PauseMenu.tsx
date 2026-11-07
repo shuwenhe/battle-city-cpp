@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import type { PlayerControl } from '../../input/bindings'
+import type { PlayerControl } from '../../../core/input/bindings'
 import { directionLabel, keyLabel } from './keyLabels'
 import { useMenuKeys } from './menuKeys'
 import PixelText from './pixel/PixelText'

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
-import { BLOCK_SIZE as B } from '../../../engine/constants'
-import type { PlayerControl } from '../../../input/bindings'
+import { BLOCK_SIZE as B } from '../../../../core/engine/constants'
+import type { PlayerControl } from '../../../../core/input/bindings'
 import { keyLabel } from '../keyLabels'
 import { useMenuKeys } from '../menuKeys'
 import HintText from '../pixel/HintText'

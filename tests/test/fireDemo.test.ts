@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
-import { STEP_MS } from '../engine/Game'
-import FireDemo from '../engine/FireDemo'
+import { STEP_MS } from '../../core/engine/Game'
+import FireDemo from '../../core/engine/FireDemo'
 
 function run(demo: FireDemo, ms: number) {
   for (let t = 0; t < ms; t += STEP_MS) demo.step(STEP_MS)

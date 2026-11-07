@@ -1,4 +1,4 @@
-import { BLOCK_SIZE as B } from '../../../engine/constants'
+import { BLOCK_SIZE as B } from '../../../../core/engine/constants'
 import PixelText from './PixelText'
 
 /** 页面底部的半尺寸灰色提示行 */

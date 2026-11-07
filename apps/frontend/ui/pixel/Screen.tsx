@@ -1,5 +1,5 @@
 import type { CSSProperties, MouseEventHandler, ReactNode } from 'react'
-import { SCREEN_HEIGHT, SCREEN_WIDTH, ZOOM_LEVEL } from '../../../engine/constants'
+import { SCREEN_HEIGHT, SCREEN_WIDTH, ZOOM_LEVEL } from '../../../../core/engine/constants'
 
 interface ScreenProps {
   background?: string

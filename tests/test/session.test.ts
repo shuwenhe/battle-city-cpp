@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest'
-import { STEP_MS } from '../engine/Game'
-import { botSpawnInterval, frame, SNOW_SLIDE_START } from '../engine/constants'
-import { PLAYER1_CONTROL } from '../input/bindings'
+import { STEP_MS } from '../../core/engine/Game'
+import { botSpawnInterval, frame, SNOW_SLIDE_START } from '../../core/engine/constants'
+import { PLAYER1_CONTROL } from '../../core/input/bindings'
 import { killAllBots, makeStage, P1, P2, runUntilPlaying, runUntilSpawned, setup } from './helpers'
 
 describe('GameSession', () => {

@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { BLOCK_SIZE as B } from '../../../engine/constants'
+import { BLOCK_SIZE as B } from '../../../../core/engine/constants'
 import { formatScore } from '../formatScore'
 import { useMenuKeys } from '../menuKeys'
 import { BrickPatternDef, brickPatternFill } from '../pixel/BrickWall'

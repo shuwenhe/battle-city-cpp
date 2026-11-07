@@ -1,5 +1,5 @@
-import { ITEM_SIZE_MAP } from '../../../engine/constants'
-import { brickShape } from '../../../render/sprites/terrain'
+import { ITEM_SIZE_MAP } from '../../../../core/engine/constants'
+import { brickShape } from '../../../../core/render/sprites/terrain'
 
 /** 单块 4×4 砖 */
 export default function BrickWall({ x, y }: { x: number; y: number }) {

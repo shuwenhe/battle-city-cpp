@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
-import { BLOCK_SIZE as B } from '../../../engine/constants'
-import { probeLan } from '../../../lan/client'
+import { BLOCK_SIZE as B } from '../../../../core/engine/constants'
+import { probeLan } from '../../../../core/lan/client'
 import { BrickPatternDef, brickPatternFill } from '../pixel/BrickWall'
 import { OverlayFrame, useOverlayKeys } from '../pixel/Overlay'
 import PixelText, { textWidth } from '../pixel/PixelText'

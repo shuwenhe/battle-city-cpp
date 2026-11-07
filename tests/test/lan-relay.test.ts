@@ -4,7 +4,7 @@ import type { AddressInfo } from 'node:net'
 import type { NetworkInterfaceInfo } from 'node:os'
 import { afterEach, beforeEach, describe, expect, it } from 'vitest'
 import { WebSocket } from 'ws'
-import { createLanRelay, lanAddresses, type LanRelay } from '../bin/lan-relay.js'
+import { createLanRelay, lanAddresses, type LanRelay } from '../../tools/bin/lan-relay.js'
 
 interface Client {
   ws: WebSocket

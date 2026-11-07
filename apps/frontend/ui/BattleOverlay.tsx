@@ -6,7 +6,7 @@ import {
   SCREEN_HEIGHT,
   SCREEN_WIDTH,
   ZOOM_LEVEL,
-} from '../../engine/constants'
+} from '../../../core/engine/constants'
 import { BotCountIndicator, PlayerTankThumbnail } from './pixel/icons'
 import PauseMenu, { PauseNotice, type PauseMenuProps } from './PauseMenu'
 import PixelText from './pixel/PixelText'
