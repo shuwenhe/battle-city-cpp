@@ -21,7 +21,7 @@ mkdir -p build/wasm
 echo "📦 Compiling C++ to WebAssembly..."
 
 emcc \
-  -I./cpp/include \
+  -I./include \
   ./cpp/src/geometry.cpp \
   ./cpp/src/collision.cpp \
   ./cpp/src/bullet-collision.cpp \
