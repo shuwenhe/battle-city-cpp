@@ -68,6 +68,15 @@
         }
       }
     </style>
+    <script>
+      // Vite define globals - injected at runtime
+      if (typeof __APP_VERSION__ === 'undefined') {
+        window.__APP_VERSION__ = '0.4.0'
+      }
+      if (typeof __BUILD_TIME__ === 'undefined') {
+        window.__BUILD_TIME__ = new Date().toLocaleString('zh-CN', { hour12: false })
+      }
+    </script>
   </head>
   <body>
     <div id="root"></div>

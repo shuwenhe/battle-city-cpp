@@ -1,4 +1,4 @@
-import type { PlayerControl } from '../../core/input/bindings'
+import type { PlayerControl } from '../core/input/bindings'
 
 /** 像素字体只有字母、数字、少量标点和方向箭头，其余按键用英文短名 */
 const KEY_LABELS: Record<string, string> = {
