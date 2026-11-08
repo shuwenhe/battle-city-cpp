@@ -1,297 +1,293 @@
-# Battle City C++ 
+# Battle City C++
 
-🎮 经典坦克大战游戏的现代 C++ 与 Web 混合实现
+🎮 Modern C++ and Web hybrid implementation of the classic Battle City game
 
-**原项目**: [feichao93/battle-city](https://github.com/feichao93/battle-city) (React 19 + PixiJS v8)  
-**当前版本**: 0.4.0  
-**许可证**: MIT
+## 📋 Project Overview
 
-## 📋 项目概述
+This is a project that reimplements the original TypeScript/React Battle City game with a C++ backend + React frontend hybrid architecture. The project includes:
 
-这是一个将原始 TypeScript/React 坦克大战游戏重新实现为 C++ 后端 + React 前端混合架构的项目。项目包含：
+- 🎯 **C++ Game Engine** - Deterministic physics engine and game logic
+- 🎨 **React Frontend** - 2D rendering using PixiJS v8
+- 🌐 **Local Area Network Support** - Multiplayer gaming over LAN
+- 🧪 **Complete Test Suite** - Vitest unit and integration tests
 
-- 🎯 **C++ 游戏引擎** - 确定性的物理引擎和游戏逻辑
-- 🎨 **React 前端** - 使用 PixiJS v8 进行 2D 渲染
-- 🌐 **LocalArea Network 支持** - 局域网内的联机游戏功能
-- 🧪 **完整测试套件** - Vitest 单元测试和集成测试
+## 🚀 Quick Start
 
-## 🚀 快速开始
-
-### 环境要求
+### Requirements
 
 - **Node.js**: >= 18.x
-- **npm** 或 **pnpm**
-- **C++ 编译器**: clang++ (macOS) 或 g++ (Linux)
+- **npm** or **pnpm**
+- **C++ Compiler**: clang++ (macOS) or g++ (Linux)
 
-### 安装与运行
+### Installation and Running
 
 ```bash
-# 1. 克隆项目
+# 1. Clone the repository
 git clone https://github.com/shuwenhe/battle-city-cpp.git
 cd battle-city-cpp
 
-# 2. 安装依赖
+# 2. Install dependencies
 npm install
 
-# 3. 启动开发服务器
-make              # 或 npm run dev
-# 服务器运行在 http://localhost:5173/
+# 3. Start the development server
+make              # or npm run dev
+# Server runs at http://localhost:5173/
 ```
 
-### 常用命令
+### Common Commands
 
 ```bash
-# 开发服务器
-make              # 启动 Vite dev server
-npm run dev       # 同上
+# Development server
+make              # Start Vite dev server
+npm run dev       # Same as above
 
-# 构建
-npm run build     # TypeScript 检查 + Vite 生产构建
+# Build
+npm run build     # TypeScript check + Vite production build
 
-# 测试
-npm test          # 运行所有测试（Vitest）
-npm run test:watch  # 监听模式
+# Testing
+npm test          # Run all tests (Vitest)
+npm run test:watch  # Watch mode
 
-# 竞技场模式
-npm run arena     # AI vs AI 无头统计测试
+# Arena mode
+npm run arena     # AI vs AI headless statistics test
 ```
 
-## 📁 项目结构
+## 📁 Project Structure
 
 ```
 battle-city-cpp/
-├── frontend/              # React 前端 (PixiJS 渲染)
-│   ├── screens/          # 游戏场景 (Title, ChooseStage, Editor 等)
-│   ├── pixel/            # 像素艺术UI组件
-│   ├── hooks/            # React 自定义 Hook
-│   ├── api/              # 后端通信
-│   ├── editor/           # 关卡编辑器
-│   ├── App.tsx           # 主应用组件
-│   └── store.ts          # Zustand 状态管理
+├── frontend/              # React frontend (PixiJS rendering)
+│   ├── screens/          # Game scenes (Title, ChooseStage, Editor, etc.)
+│   ├── pixel/            # Pixel art UI components
+│   ├── hooks/            # React custom hooks
+│   ├── api/              # Backend communication
+│   ├── editor/           # Level editor
+│   ├── App.tsx           # Main app component
+│   └── store.ts          # Zustand state management
 │
-├── core/                 # 游戏核心逻辑 (确定性)
-│   ├── engine/           # 物理引擎、游戏规则
-│   ├── audio/            # 音频管理
-│   ├── lan/              # 局域网联机
-│   └── render/           # PixiJS 渲染 (仅前端)
+├── core/                 # Game core logic (deterministic)
+│   ├── engine/           # Physics engine, game rules
+│   ├── audio/            # Audio management
+│   ├── lan/              # LAN multiplayer
+│   └── render/           # PixiJS rendering (frontend only)
 │
-├── backend/              # C++ 后端 (可选)
+├── backend/              # C++ backend (optional)
 │   ├── src/
 │   ├── Makefile
 │   └── CMakeLists.txt
 │
-├── tests/                # 测试文件
+├── tests/                # Test files
 │   └── test/
 │
-├── .config/              # 工具配置
-│   ├── vite.config.ts    # Vite 配置
-│   ├── tsconfig.json     # TypeScript 配置
-│   └── Makefile          # make 命令
+├── .config/              # Tool configuration
+│   ├── vite.config.ts    # Vite config
+│   ├── tsconfig.json     # TypeScript config
+│   └── Makefile          # make commands
 │
-├── Makefile              # 项目主入口
-├── package.json          # npm 配置
-├── main.tsx              # React 应用入口
-├── index.html            # HTML 模板
-└── README.md             # 本文件
+├── Makefile              # Project entry point
+├── package.json          # npm configuration
+├── main.tsx              # React app entry point
+├── index.html            # HTML template
+└── README.md             # This file
 ```
 
-## 🎮 游戏玩法
+## 🎮 Gameplay
 
-### 单人模式
-- **移动**: ↑↓←→ 或 WASD
-- **射击**: Space
-- **菜单导航**: ↑↓← → 或 WASD + Enter/Space
+### Single Player Mode
+- **Movement**: ↑↓←→ or WASD
+- **Shoot**: Space
+- **Menu Navigation**: ↑↓← → or WASD + Enter/Space
 
-### 双人模式
-- **玩家 1**: ↑↓←→ + Space
-- **玩家 2**: WASD + Enter
+### Two Player Mode
+- **Player 1**: ↑↓←→ + Space
+- **Player 2**: WASD + Enter
 
-### 功能特性
+### Features
 
-- ✅ 25 关原版关卡
-- ✅ 关卡编辑器 - 自定义设计关卡
-- ✅ 2 人合作游戏
-- ✅ 画廊模式 - 预览所有坦克、动画、特效
-- ✅ 系统选项 - 音量、难度设置
-- ✅ 局域网联机 - 在同一网络内与其他玩家对战
+- ✅ 25 original levels
+- ✅ Level Editor - design custom levels
+- ✅ 2-player cooperative gameplay
+- ✅ Gallery mode - preview all tanks, animations, effects
+- ✅ System settings - volume, difficulty
+- ✅ LAN multiplayer - battle with other players on the same network
 
-## 🏗️ 技术栈
+## 🏗️ Tech Stack
 
-### 前端
-- **框架**: React 19.x
-- **渲染**: PixiJS v8.x (WebGL/Canvas 2D)
-- **构建**: Vite 6.x
-- **语言**: TypeScript 5.x
-- **状态管理**: Zustand 5.x
-- **样式**: CSS + SVG
+### Frontend
+- **Framework**: React 19.x
+- **Rendering**: PixiJS v8.x (WebGL/Canvas 2D)
+- **Build Tool**: Vite 6.x
+- **Language**: TypeScript 5.x
+- **State Management**: Zustand 5.x
+- **Styling**: CSS + SVG
 
-### 后端 (可选)
-- **语言**: C++17
-- **构建**: CMake + Make
-- **通信**: WebSocket
+### Backend (Optional)
+- **Language**: C++17
+- **Build**: CMake + Make
+- **Communication**: WebSocket
 
-### 测试
-- **框架**: Vitest 3.x
-- **环境**: jsdom (模拟 DOM)
+### Testing
+- **Framework**: Vitest 3.x
+- **Environment**: jsdom (DOM simulation)
 
-## 📊 项目历程
+## 📊 Project Progress
 
-### 最近更新 (v0.4.0)
+### Latest Update (v0.4.0)
 
-1. **目录结构优化** ✅
-   - 移除中间的 `app/` 目录
-   - `app/frontend/` → `frontend/` (根级别)
-   - `app/backend/` → `backend/` (根级别)
+1. **Directory Structure Optimization** ✅
+   - Removed intermediate `app/` directory
+   - `app/frontend/` → `frontend/` (root level)
+   - `app/backend/` → `backend/` (root level)
 
-2. **开发工作流改进** ✅
-   - 统一 `make` 命令启动游戏
-   - 替换所有 pnpm 引用为 npm
-   - Vite 开发模式 base 路径修复
+2. **Development Workflow Improvements** ✅
+   - Unified `make` command to start the game
+   - Replaced all pnpm references with npm
+   - Fixed Vite development mode base path
 
-3. **React 编译配置修复** ✅
-   - 从 `"jsx": "react-jsx"` 改为 `"jsx": "react"`
-   - 所有 TSX 文件添加显式 React 导入
-   - 修复了组件编译错误
+3. **React Compilation Config Fix** ✅
+   - Changed from `"jsx": "react-jsx"` to `"jsx": "react"`
+   - Added explicit React imports to all TSX files
+   - Fixed component compilation errors
 
-4. **Git 历史清理** ✅
-   - 移除所有 Copilot 共同作者信息
-   - 创建 `main2` 分支保存清理后的历史
+4. **Git History Cleanup** ✅
+   - Removed all Copilot co-author information
+   - Created `main2` branch with cleaned history
 
-## 🔧 开发指南
+## 🔧 Development Guide
 
-### 启动开发服务器
+### Start Development Server
 
 ```bash
 make
-# 访问 http://localhost:5173/
+# Visit http://localhost:5173/
 ```
 
-开发服务器支持：
-- ✅ 热模块替换 (HMR)
-- ✅ TypeScript 类型检查
-- ✅ 快速刷新
+Development server features:
+- ✅ Hot Module Replacement (HMR)
+- ✅ TypeScript type checking
+- ✅ Fast refresh
 
-### 添加新功能
+### Adding New Features
 
-1. **前端组件** - 在 `frontend/` 中创建
-2. **游戏逻辑** - 在 `core/engine/` 中实现
-3. **测试** - 在 `tests/test/` 中编写
+1. **Frontend Components** - Create in `frontend/`
+2. **Game Logic** - Implement in `core/engine/`
+3. **Tests** - Write in `tests/test/`
 
-### 编辑关卡
+### Editing Levels
 
-进入游戏 → 选择 "GALLERY" → "EDITOR" 编辑关卡
+Enter Game → Select "GALLERY" → "EDITOR" to edit levels
 
-### 运行测试
+### Running Tests
 
 ```bash
-# 单次运行
+# Single run
 npm test
 
-# 监听模式
+# Watch mode
 npm run test:watch
 
-# 覆盖率
+# Coverage
 npm test -- --coverage
 ```
 
-## 🌍 部署
+## 🌍 Deployment
 
-### 构建生产版本
+### Build Production Version
 
 ```bash
 npm run build
 ```
 
-输出目录: `dist/`
+Output directory: `dist/`
 
-### 发布到 npm
+### Publish to npm
 
 ```bash
-npm run build:npm    # 构建到 www/
-npm publish          # 发布到 npm 仓库
+npm run build:npm    # Build to www/
+npm publish          # Publish to npm registry
 ```
 
-## 📝 配置文件
+## 📝 Configuration Files
 
-### Vite 配置 (`.config/vite.config.ts`)
-- 开发模式: base = `/`
-- 生产模式: base = `/battle-city/` (GitHub Pages)
+### Vite Config (`.config/vite.config.ts`)
+- Development mode: base = `/`
+- Production mode: base = `/battle-city/` (GitHub Pages)
 
-### TypeScript 配置 (`.config/tsconfig.json`)
-- 目标: ES2020
-- 模块: ESNext
-- JSX: react (传统 JSX)
+### TypeScript Config (`.config/tsconfig.json`)
+- Target: ES2020
+- Module: ESNext
+- JSX: react (traditional JSX)
 
-### Prettier 格式化 (`.config/`)
-- 行宽: 100
-- 不使用分号
-- 单引号
-- 尾随逗号
+### Prettier Formatting (`.config/`)
+- Print width: 100
+- No semicolons
+- Single quotes
+- Trailing commas
 
-## 🐛 故障排除
+## 🐛 Troubleshooting
 
-### 游戏加载后黑屏
+### Black Screen After Game Loads
 
-**原因**: React 组件编译错误，通常是缺少 React 导入
+**Cause**: React component compilation error, usually missing React import
 
-**解决**:
-1. 打开浏览器开发者工具 (F12)
-2. 查看 Console 标签中的错误
-3. 在相关 `.tsx` 文件顶部添加 `import React from 'react'`
+**Solution**:
+1. Open browser developer tools (F12)
+2. Check Console tab for errors
+3. Add `import React from 'react'` at the top of the related `.tsx` file
 
-### 游戏运行缓慢
+### Game Running Slowly
 
-**原因**: 调试工具开启或浏览器扩展干扰
+**Cause**: Debugging tools enabled or browser extensions interfering
 
-**解决**:
-1. 使用无痕模式打开
-2. 禁用浏览器扩展
-3. 检查 Network 标签确认资源加载正常
+**Solution**:
+1. Open in incognito mode
+2. Disable browser extensions
+3. Check Network tab to confirm resources are loading properly
 
-### 构建失败
+### Build Fails
 
-**原因**: TypeScript 类型错误或依赖缺失
+**Cause**: TypeScript type errors or missing dependencies
 
-**解决**:
+**Solution**:
 ```bash
-# 重新安装依赖
+# Reinstall dependencies
 rm -rf node_modules package-lock.json
 npm install
 
-# 清除缓存
+# Clear cache
 npm run build -- --clearCache
 
-# 检查 TypeScript
+# Check TypeScript
 npx tsc --noEmit
 ```
 
-## 📚 参考资源
+## 📚 Resources
 
-- [React 官方文档](https://react.dev)
-- [PixiJS 文档](https://pixijs.download/release/docs/index.html)
-- [Vite 文档](https://vitejs.dev)
-- [TypeScript 文档](https://www.typescriptlang.org)
-- [Zustand 文档](https://github.com/pmndrs/zustand)
+- [React Official Documentation](https://react.dev)
+- [PixiJS Documentation](https://pixijs.download/release/docs/index.html)
+- [Vite Documentation](https://vitejs.dev)
+- [TypeScript Documentation](https://www.typescriptlang.org)
+- [Zustand Documentation](https://github.com/pmndrs/zustand)
 
-## 🤝 贡献指南
+## 🤝 Contributing Guide
 
-欢迎提交 Issue 和 Pull Request！
+Issues and Pull Requests are welcome!
 
-### 提交 Commit 时请遵循:
+### Commit Message Convention:
 ```
-<type>(<scope>): <中文描述>
+<type>(<scope>): <description>
 
-<详细说明（可选）>
+<detailed explanation (optional)>
 ```
 
-类型: `feat`, `fix`, `docs`, `style`, `refactor`, `test`, `chore`
+Types: `feat`, `fix`, `docs`, `style`, `refactor`, `test`, `chore`
 
-## 📄 许可证
+## 📄 License
 
-MIT License - 参见 [LICENSE](LICENSE)
+MIT License - See [LICENSE](LICENSE)
 
 ---
 
-**当前分支**: main2 (清理后的 Git 历史)  
-**最后更新**: 2026-11-08  
-**维护者**: ShuwenHe
+**Current Branch**: main2 (cleaned git history)  
+**Last Updated**: 2026-11-08  
+**Maintainer**: ShuwenHe
